@@ -1,7 +1,6 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Сергей Павлов](https://up.htmlacademy.ru/react/3/user/109209).
-* Наставник: `Неизвестно`.
 
 ---
 
