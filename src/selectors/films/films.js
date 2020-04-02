@@ -1,13 +1,18 @@
 import {createSelector} from 'reselect';
-import {getFilterGenreSelector} from '../filters/genre';
+import {
+  getFilterGenreSelector,
+  getFilterGenreByPropsSelector
+} from '../filters/genre';
 import {GenreTypes} from '../../constants/genre-type';
 
 export const getFilmsSelector = (state) => state.films.films;
 export const getFilmIdSelector = (_, props) => props.match.params.id;
 
 export const getFiltratedFilmsSelector = createSelector(
-    getFilmsSelector, getFilterGenreSelector,
-    (films, genre) => {
+    getFilmsSelector, getFilterGenreSelector, getFilterGenreByPropsSelector,
+    (films, genreByState, genreByProps) => {
+      const genre = genreByProps || genreByState;
+
       if (genre === GenreTypes.ALL) {
         return films;
       }

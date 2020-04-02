@@ -12,6 +12,7 @@ export class MoviesList extends PureComponent {
   }
 
   componentDidMount() {
+    // TODO не загружать здесь
     this.props.onLoadFilms();
   }
 
@@ -53,8 +54,8 @@ MoviesList.propTypes = {
 
 const MoviesListWrapper = withActiveItem(MoviesList);
 
-const mapStateToProps = (state) => ({
-  films: getFiltratedFilmsSelector(state)
+const mapStateToProps = (state, ownProps) => ({
+  films: getFiltratedFilmsSelector(state, ownProps)
 });
 
 const mapDispatchToProps = (dispatch) => ({

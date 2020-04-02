@@ -17,4 +17,16 @@ describe(`films selector`, () => {
       expect(film).toHaveProperty(`genre`, GenreTypes.DRAMS);
     });
   });
+
+  it(`should get filtrated films when have a genre in props`, () => {
+    const props = {
+      genre: GenreTypes.HORROR
+    };
+
+    const filtratedFilms = getFiltratedFilmsSelector(state, props);
+
+    filtratedFilms.forEach((film) => {
+      expect(film).toHaveProperty(`genre`, GenreTypes.HORROR);
+    });
+  });
 });
