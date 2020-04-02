@@ -16,3 +16,7 @@ export const ApiConfiguration = {
   timeout: 5000,
   withCredentials: true
 };
+
+export const ResponseStatus = {
+  UNAUTHORIZED: 401
+};
