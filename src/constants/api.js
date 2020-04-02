@@ -18,5 +18,5 @@ export const ApiConfiguration = {
 };
 
 export const ResponseStatus = {
-  NO_AUTH: 401
+  UNAUTHORIZED: 401
 };
