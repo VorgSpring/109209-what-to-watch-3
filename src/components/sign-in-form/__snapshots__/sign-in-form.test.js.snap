@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingInForm should renders correctly 1`] = `
+<form
+  action="#"
+  className="sign-in__form"
+  onChange={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="sign-in__message"
+  />
+  <div
+    className="sign-in__fields"
+  >
+    <div
+      className="sign-in__field null"
+    >
+      <input
+        className="sign-in__input"
+        defaultValue="blah"
+        id="email"
+        name="email"
+        placeholder="Email address"
+        type="email"
+      />
+      <label
+        className="sign-in__label visually-hidden"
+        htmlFor="email"
+      >
+        Email address
+      </label>
+    </div>
+    <div
+      className="sign-in__field null"
+    >
+      <input
+        className="sign-in__input"
+        defaultValue="blah"
+        id="password"
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+      <label
+        className="sign-in__label visually-hidden"
+        htmlFor="password"
+      >
+        Password
+      </label>
+    </div>
+  </div>
+  <div
+    className="sign-in__submit"
+  >
+    <button
+      className="sign-in__btn"
+      type="submit"
+    >
+      Sign in
+    </button>
+  </div>
+</form>
+`;
+
+exports[`SingInForm should renders correctly with errors 1`] = `
+<form
+  action="#"
+  className="sign-in__form"
+  onChange={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="sign-in__message"
+  >
+    <p>
+      blah
+    </p>
+    <p>
+      blah
+    </p>
+  </div>
+  <div
+    className="sign-in__fields"
+  >
+    <div
+      className="sign-in__field sign-in__field--error"
+    >
+      <input
+        className="sign-in__input"
+        defaultValue="blah"
+        id="email"
+        name="email"
+        placeholder="Email address"
+        type="email"
+      />
+      <label
+        className="sign-in__label visually-hidden"
+        htmlFor="email"
+      >
+        Email address
+      </label>
+    </div>
+    <div
+      className="sign-in__field sign-in__field--error"
+    >
+      <input
+        className="sign-in__input"
+        defaultValue="blah"
+        id="password"
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+      <label
+        className="sign-in__label visually-hidden"
+        htmlFor="password"
+      >
+        Password
+      </label>
+    </div>
+  </div>
+  <div
+    className="sign-in__submit"
+  >
+    <button
+      className="sign-in__btn"
+      type="submit"
+    >
+      Sign in
+    </button>
+  </div>
+</form>
+`;

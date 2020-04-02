@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SmallMovieCard should renders correctly 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <video
+      controls={false}
+      height="175"
+      muted={true}
+      poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      width="280"
+    >
+      <source
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        type="video/mp4"
+      />
+      <source
+        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+        type="video/webm"
+      />
+      Your browser doesn't support HTML5 video tag.
+    </video>
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="/film/1"
+      onClick={[Function]}
+    >
+      Fantastic Beasts: The Crimes of Grindelwald
+    </a>
+  </h3>
+</article>
+`;
