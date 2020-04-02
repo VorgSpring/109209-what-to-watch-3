@@ -2,6 +2,7 @@ export const films = [
   {
     id: 1,
     bgImage: `/bg-image`,
+    bgColor: `#fff`,
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -30,6 +31,7 @@ export const films = [
   {
     id: 2,
     bgImage: `/bg-image`,
+    bgColor: `#fff`,
     name: `Bohemian Rhapsody`,
     poster: `img/bohemian-rhapsody.jpg`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -57,6 +59,7 @@ export const films = [
   {
     id: 3,
     bgImage: `/bg-image`,
+    bgColor: `#fff`,
     name: `Macbeth`,
     poster: `img/macbeth.jpg`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -84,6 +87,7 @@ export const films = [
   {
     id: 4,
     bgImage: `/bg-image`,
+    bgColor: `#fff`,
     name: `Aviator`,
     poster: `img/aviator.jpg`,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
