@@ -9,7 +9,7 @@ export const createAPI = (onLoginFail) => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
-    if (err.response.status === ResponseStatus.NO_AUTH) {
+    if (err.response.status === ResponseStatus.UNAUTHORIZED) {
       onLoginFail();
       return;
     }
