@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenreItem should renders correctly 1`] = `
+<li
+  className="catalog__genres-item "
+  onClick={[Function]}
+>
+  <a
+    className="catalog__genres-link"
+  >
+    All genres
+  </a>
+</li>
+`;
