@@ -10,7 +10,10 @@ describe(`MoviesList`, () => {
         <BrowserRouter>
           <MoviesList
             films={films}
+            showCount={8}
             onLoadFilms={() => {}}
+            onActiveItem={() => {}}
+            onSetMoreItemsToShow={() => {}}
           />
         </BrowserRouter>
     ).toJSON();
