@@ -23,6 +23,12 @@ export class MovieReviews extends PureComponent {
     }
   }
 
+  componentDidUpdate({filmId}) {
+    if (this.props.filmId !== filmId && !this.props.reviews) {
+      this.props.onLoadReviews(this.props.filmId);
+    }
+  }
+
   render() {
     const {reviews} = this.props;
 

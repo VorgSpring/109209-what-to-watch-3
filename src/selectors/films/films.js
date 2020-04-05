@@ -7,19 +7,27 @@ import {GenreTypes} from '../../constants/genre-type';
 
 export const getFilmsSelector = (state) => state.films.films;
 export const getFilmIdSelector = (_, props) => props.match.params.id;
+export const getFilmExcludeIdSelector = (_, props) => props && props.excludeId || null;
+export const getMaxFilmsCountSelector = (_, props) => props && props.max || null;
 
 export const getFiltratedFilmsSelector = createSelector(
-    getFilmsSelector, getFilterGenreSelector, getFilterGenreByPropsSelector,
-    (films, genreByState, genreByProps) => {
-      const genre = genreByProps || genreByState;
+    getFilmsSelector,
+    getFilterGenreSelector,
+    getFilterGenreByPropsSelector,
+    getFilmExcludeIdSelector,
+    getMaxFilmsCountSelector,
+    (films, genreByState, genreByProps, excludeId, max) => {
+      const genreFilter = genreByProps || genreByState;
 
-      if (genre === GenreTypes.ALL) {
+      if (genreFilter === GenreTypes.ALL) {
         return films;
       }
 
-      return films.filter((film) => (
-        film.genre === genre
+      const result = films.filter(({genre, id}) => (
+        genre === genreFilter && excludeId !== id
       ));
+
+      return max ? result.slice(0, max) : result;
     }
 );
 

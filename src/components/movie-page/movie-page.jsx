@@ -23,7 +23,7 @@ export const MoviePage = ({film}) => {
         <section className='catalog catalog--like-this'>
           <h2 className='catalog__title'>More like this</h2>
 
-          <MoviesListContainer genre={film.genre} />
+          <MoviesListContainer genre={film.genre} max={4} excludeId={film.id} />
         </section>
 
         <Footer />
