@@ -37,7 +37,6 @@ describe(`VideoPlayer`, () => {
   it(`should video on play`, () => {
     jest.useFakeTimers();
     player.setProps({action: `play`});
-    jest.runAllTimers();
     expect(fakePlay).toHaveBeenCalled();
   });
 

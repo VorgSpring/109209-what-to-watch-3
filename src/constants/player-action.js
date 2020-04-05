@@ -1,5 +1,7 @@
 export const PlayerAction = {
   PLAY: `play`,
   PAUSE: `pause`,
-  LOAD: `load`
+  LOAD: `load`,
+  FULLSCREEN: `fullscreen`,
+  SET_TIME: `set-time`
 };

@@ -4,6 +4,7 @@ import {SmallMovieCard} from './small-movie-card.jsx';
 import {films} from '../../mocks/films';
 
 describe(`SmallMovieCard`, () => {
+  // TODO подправить тест на проверку state
   it(`should correctly hover`, () => {
     const hoverHandler = jest.fn();
     const film = films[0];

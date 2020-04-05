@@ -22,7 +22,9 @@ export class VideoPlayer extends PureComponent {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timer);
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
   }
 
   performAction() {
@@ -43,9 +45,13 @@ export class VideoPlayer extends PureComponent {
   playVideo() {
     const {duration} = this.props;
 
-    this.timer = setTimeout(() => {
+    if (duration) {
+      this.timer = setTimeout(() => {
+        this.playerRef.current.play();
+      }, duration);
+    } else {
       this.playerRef.current.play();
-    }, duration);
+    }
   }
 
   pauseVideo() {
@@ -71,6 +77,10 @@ export class VideoPlayer extends PureComponent {
     );
   }
 }
+
+VideoPlayer.defaultProps = {
+  duration: false
+};
 
 VideoPlayer.propTypes = {
   source: PropTypes.oneOfType([
