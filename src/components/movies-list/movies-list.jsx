@@ -34,7 +34,7 @@ export class MoviesList extends PureComponent {
         <div className="catalog__movies-list">
           {filmsToBeShown.map((film) => (
             <SmallMovieCard
-              key={film.name}
+              key={film.id}
               film={film}
               onHoverCard={onActiveItem} />
           ))}

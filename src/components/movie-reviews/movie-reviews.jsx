@@ -24,7 +24,7 @@ export class MovieReviews extends PureComponent {
   }
 
   componentDidUpdate({filmId}) {
-    if (this.props.filmId !== filmId && !this.props.reviews) {
+    if (this.props.filmId !== filmId) {
       this.props.onLoadReviews(this.props.filmId);
     }
   }
