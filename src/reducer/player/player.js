@@ -3,7 +3,7 @@ import {
   CLOSE_PLAYER
 } from '../../constants/actions-type';
 
-const initialState = {
+export const initialState = {
   isShow: false,
   filmId: null
 };

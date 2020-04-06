@@ -93,6 +93,10 @@ export const MoviePlayerComponent = ({
   );
 };
 
+MoviePlayerComponent.defaultProps = {
+  status: null
+};
+
 MoviePlayerComponent.propTypes = {
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -103,7 +107,7 @@ MoviePlayerComponent.propTypes = {
       PropTypes.string
     ]).isRequired,
   }).isRequired,
-  status: PropTypes.string.isRequired,
+  status: PropTypes.string,
   refNode: PropTypes.object.isRequired,
   progress: PropTypes.number.isRequired,
   currentTime: PropTypes.number.isRequired,
@@ -112,9 +116,9 @@ MoviePlayerComponent.propTypes = {
   onClosePlayer: PropTypes.func.isRequired
 };
 
-export const MoviePlayer = withVideoPlayer(MoviePlayerComponent);
+const MoviePlayer = withVideoPlayer(MoviePlayerComponent);
 
-export const MoviePlayerPortal = (props) => (ReactDOM.createPortal(
+const MoviePlayerPortal = (props) => (ReactDOM.createPortal(
     (
       props.isShowPlayer && <MoviePlayer {...props} />
     ),

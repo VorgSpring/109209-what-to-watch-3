@@ -51,19 +51,19 @@ export const withVideoPlayer = (Component) => {
       }
 
       this.player.current.removeEventListener(
-          `timeupdate`, this.handleTimeUpdate
-      );
-
-      this.player.current.removeEventListener(
-          `canplaythrough`, this.handleCanPlayThrough
-      );
-
-      this.player.current.removeEventListener(
           `play`, this.handlePlay
       );
 
       this.player.current.removeEventListener(
           `pause`, this.handlePause
+      );
+
+      this.player.current.removeEventListener(
+          `timeupdate`, this.handleTimeUpdate
+      );
+
+      this.player.current.removeEventListener(
+          `canplaythrough`, this.handleCanPlayThrough
       );
 
       this.player = null;

@@ -1,4 +1,9 @@
-import {getFilmsSelector, getFiltratedFilmsSelector} from './films';
+import {
+  getFilmsSelector,
+  getFiltratedFilmsSelector,
+  getFilmByIdSelector,
+  getPlayedFilmSelector
+} from './films';
 import {GenreTypes} from '../../constants/genre-type';
 import {state} from '../../mocks/state';
 import {films} from '../../mocks/films';
@@ -58,4 +63,32 @@ describe(`films selector`, () => {
 
     expect(filtratedFilms.length).toBe(1);
   });
+
+  it(`should get get film by id selector`, () => {
+    const props = {
+      match: {
+        params: {
+          id: 1
+        }
+      }
+    };
+
+    const film = getFilmByIdSelector(state, props);
+
+    expect(film).toEqual(films[0]);
+  });
+
+  it(`should get get film by played selector`, () => {
+    const newState = Object.assign(
+        {}, state, {
+          player: {
+            filmId: 1
+          }
+        });
+
+    const film = getPlayedFilmSelector(newState);
+
+    expect(film).toEqual(films[0]);
+  });
+
 });

@@ -12,6 +12,7 @@ describe(`VideoPlayer`, () => {
           name={name}
           poster={poster}
           source={preview}
+          forwardedRef={React.createRef()}
         />
     ).toJSON();
 

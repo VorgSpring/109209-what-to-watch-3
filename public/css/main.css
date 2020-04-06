@@ -936,7 +936,7 @@ main {
   bottom: 0;
 }
 
-.player::after {
+/* .player::after {
   content: '';
   position: absolute;
   z-index: 1;
@@ -945,7 +945,7 @@ main {
   left: 0;
   right: 0;
   background: rgba(0,0,0,0.40);
-}
+} */
 
 .player__video {
   width: 100%;

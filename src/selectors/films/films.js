@@ -11,6 +11,15 @@ export const getFilmIdSelector = (_, props) => props.match.params.id;
 export const getFilmExcludeIdSelector = (_, props) => props && props.excludeId || null;
 export const getMaxFilmsCountSelector = (_, props) => props && props.max || null;
 
+export const findFilmById = (films, id) => {
+  const parseId = parseInt(id, 10);
+  if (isNaN(parseId)) {
+    return null;
+  }
+
+  return films.find((film) => film.id === parseId);
+};
+
 export const getFiltratedFilmsSelector = createSelector(
     getFilmsSelector,
     getFilterGenreSelector,
@@ -33,25 +42,9 @@ export const getFiltratedFilmsSelector = createSelector(
 );
 
 export const getFilmByIdSelector = createSelector(
-    getFilmsSelector, getFilmIdSelector,
-    (films, id) => {
-      const parseId = parseInt(id, 10);
-      if (isNaN(parseId)) {
-        return null;
-      }
-
-      return films.find((film) => film.id === parseId);
-    }
+    getFilmsSelector, getFilmIdSelector, findFilmById
 );
 
 export const getPlayedFilmSelector = createSelector(
-    getFilmsSelector, getPlayedFilmIdSelector,
-    (films, id) => {
-      const parseId = parseInt(id, 10);
-      if (isNaN(parseId)) {
-        return null;
-      }
-
-      return films.find((film) => film.id === parseId);
-    }
+    getFilmsSelector, getPlayedFilmIdSelector, findFilmById
 );
