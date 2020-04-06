@@ -15,6 +15,7 @@ describe(`MoviePoster`, () => {
           isAuthorizationRequired={false}
           history={history}
           onChangeFavoritesList={() => {}}
+          onPlay={() => {}}
         />
     ).toJSON();
 

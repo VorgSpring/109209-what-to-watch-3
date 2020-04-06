@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import {SmallMovieCard} from './small-movie-card.jsx';
+import {SmallMovieCardComponent} from './small-movie-card.jsx';
 import renderer from 'react-test-renderer';
 import {films} from '../../mocks/films';
 
@@ -10,8 +10,11 @@ describe(`SmallMovieCard`, () => {
 
     const tree = renderer.create(
         <BrowserRouter>
-          <SmallMovieCard
+          <SmallMovieCardComponent
             film={film}
+            loadVideo={()=>{}}
+            playVideo={()=>{}}
+            refNode={React.createRef()}
           />
         </BrowserRouter>
     ).toJSON();

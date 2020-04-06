@@ -934,17 +934,18 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+/* .player::after {
+  content: '';
+  position: absolute;
   z-index: 1;
-  /* &::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.40);
-  } */ }
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.40);
+} */
 
 .player__video {
   width: 100%;

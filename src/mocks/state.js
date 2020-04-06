@@ -31,5 +31,9 @@ export const state = {
     reviews: {
       1: review
     }
+  },
+  player: {
+    isShow: false,
+    filmId: null
   }
 };

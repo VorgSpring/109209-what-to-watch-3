@@ -2,9 +2,10 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import store from './store';
-import {MainPage} from './components/main-page/main-page.jsx';
-import {SingInPageContainer} from './components/sign-in-page/sign-in-page.jsx';
-import {MoviePageContainer} from './components/movie-page/movie-page.jsx';
+import {MainPage} from './pages/main-page/main-page.jsx';
+import {SingInPageContainer} from './pages/sign-in-page/sign-in-page.jsx';
+import {MoviePageContainer} from './pages/movie-page/movie-page.jsx';
+import {MoviePlayerContainer} from './components/movie-player/movie-player.jsx';
 import {RoutePaths} from './constants/route-paths';
 
 export const App = () => (
@@ -29,6 +30,8 @@ export const App = () => (
           component={SingInPageContainer}
         />
       </Switch>
+
+      <MoviePlayerContainer />
     </BrowserRouter>
   </Provider>
 );

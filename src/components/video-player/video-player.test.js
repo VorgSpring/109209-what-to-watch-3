@@ -1,5 +1,5 @@
 import React from 'react';
-import {VideoPlayer} from './video-player.jsx';
+import {VideoComponent} from './video-player.jsx';
 import renderer from 'react-test-renderer';
 import {films} from '../../mocks/films';
 
@@ -8,10 +8,11 @@ describe(`VideoPlayer`, () => {
     const {name, poster, preview} = films[0];
 
     const tree = renderer.create(
-        <VideoPlayer
+        <VideoComponent
           name={name}
           poster={poster}
           source={preview}
+          forwardedRef={React.createRef()}
         />
     ).toJSON();
 

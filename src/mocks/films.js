@@ -85,6 +85,34 @@ export const films = [
     ]
   },
   {
+    id: 13,
+    bgImage: `/bg-image`,
+    bgColor: `#fff`,
+    name: `Macbeth`,
+    poster: `img/macbeth.jpg`,
+    previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    genre: `Horror`,
+    released: 2000,
+    preview: [
+      {
+        src: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        type: `video/mp4`
+      },
+      {
+        src: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        type: `video/webm`
+      }
+    ],
+    isFavorite: false,
+    rating: 1,
+    director: `blah`,
+    scoresCount: 3,
+    description: `blah`,
+    starring: [
+      `blah`, `blah`
+    ]
+  },
+  {
     id: 4,
     bgImage: `/bg-image`,
     bgColor: `#fff`,

@@ -18,6 +18,7 @@ export class PromoMovieCard extends PureComponent {
   }
 
   render() {
+    // TODO сделать нормальный прелоад
     const {film} = this.props;
 
     if (!film) {
@@ -58,6 +59,8 @@ export class PromoMovieCard extends PureComponent {
             </div>
           </MoviePoster>
         </MovieWrapper>
+
+
       </section>
     );
   }

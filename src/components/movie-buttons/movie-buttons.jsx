@@ -9,6 +9,7 @@ import {
   FavoriteStatus,
   IconFavoriteButton
 } from '../../constants/favorite';
+import {playMovie} from '../../actions/player/player';
 
 export class MovieButtons extends PureComponent {
   constructor(props) {
@@ -87,8 +88,7 @@ export class MovieButtons extends PureComponent {
 }
 
 MovieButtons.defaultProps = {
-  isFull: false,
-  onPlay: () => {}
+  isFull: false
 };
 
 MovieButtons.propTypes = {
@@ -99,7 +99,7 @@ MovieButtons.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  onPlay: PropTypes.func,
+  onPlay: PropTypes.func.isRequired,
   onChangeFavoritesList: PropTypes.func.isRequired
 };
 
@@ -110,7 +110,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeFavoritesList: (body) => dispatch(sendChangeFavoriteList(body))
+  onChangeFavoritesList: (body) => dispatch(sendChangeFavoriteList(body)),
+  onPlay: (filmId) => dispatch(playMovie(filmId))
 });
 
 export const MovieButtonsContainer = connect(

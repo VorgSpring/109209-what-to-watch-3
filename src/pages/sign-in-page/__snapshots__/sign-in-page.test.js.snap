@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SingInPage should renders correctly 1`] = `
+<div
+  className="user-page"
+>
+  <header />
+  <div
+    className="sign-in user-page__content"
+  >
+    <sing-in-form />
+  </div>
+  <footer />
+</div>
+`;
