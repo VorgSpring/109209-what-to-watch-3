@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {Header} from '../../components/header/header.jsx';
-import {SingInFormContainer} from '../../components/sign-in-form/sign-in-form.jsx';
-import {Footer} from '../../components/footer/footer.jsx';
+import {Header} from '../header/header.jsx';
+import {SingInFormContainer} from '../sign-in-form/sign-in-form.jsx';
+import {Footer} from '../footer/footer.jsx';
 import {isAuthorizationSelector} from '../../selectors/authorization/authorization';
 import {RoutePaths} from '../../constants/route-paths';
 

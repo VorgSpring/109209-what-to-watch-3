@@ -2,9 +2,9 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {MovieCard} from '../../components/movie-card/movie-card.jsx';
-import {MoviesListContainer} from '../../components/movies-list/movies-list.jsx';
-import {Footer} from '../../components/footer/footer.jsx';
+import {MovieCard} from '../movie-card/movie-card.jsx';
+import {MoviesListContainer} from '../movies-list/movies-list.jsx';
+import {Footer} from '../footer/footer.jsx';
 import {getFilmByIdSelector} from '../../selectors/films/films';
 import {RoutePaths} from '../../constants/route-paths.js';
 

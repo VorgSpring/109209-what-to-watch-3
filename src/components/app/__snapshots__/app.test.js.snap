@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should renders main-page 1`] = `
+Array [
+  <main-page />,
+  <movie-player />,
+]
+`;
+
+exports[`App should renders movie-page 1`] = `
+Array [
+  <movie-page />,
+  <movie-player />,
+]
+`;
+
+exports[`App should renders sing-in-page 1`] = `
+Array [
+  <sing-in-page />,
+  <movie-player />,
+]
+`;
