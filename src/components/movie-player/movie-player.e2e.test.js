@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {MoviePLayer} from './movie-player.jsx';
 import {films} from '../../mocks/films';
-import {PlayerAction} from '../../constants/player-action';
+import {PlayerAction} from '../../constants/player';
 
 describe(`MoviePLayer`, () => {
   let player = null;

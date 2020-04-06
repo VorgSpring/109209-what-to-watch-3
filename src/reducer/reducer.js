@@ -6,6 +6,7 @@ import favorites from './favorites/favorites';
 import user from './user/user';
 import promo from './promo-movie/promo-movie';
 import reviews from './reviews/reviews';
+import player from './player/player';
 
 export default combineReducers({
   films,
@@ -14,6 +15,7 @@ export default combineReducers({
   user,
   favorites,
   promo,
-  reviews
+  reviews,
+  player
 });
 

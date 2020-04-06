@@ -5,6 +5,7 @@ import store from './store';
 import {MainPage} from './components/main-page/main-page.jsx';
 import {SingInPageContainer} from './components/sign-in-page/sign-in-page.jsx';
 import {MoviePageContainer} from './components/movie-page/movie-page.jsx';
+import {MoviePlayerContainer} from './components/movie-player/movie-player.jsx';
 import {RoutePaths} from './constants/route-paths';
 
 export const App = () => (
@@ -29,6 +30,8 @@ export const App = () => (
           component={SingInPageContainer}
         />
       </Switch>
+
+      <MoviePlayerContainer />
     </BrowserRouter>
   </Provider>
 );

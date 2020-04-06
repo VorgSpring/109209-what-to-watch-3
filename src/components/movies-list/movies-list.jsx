@@ -21,7 +21,6 @@ export class MoviesList extends PureComponent {
     const {
       films,
       showCount,
-      onActiveItem,
       onSetMoreItemsToShow
     } = this.props;
 
@@ -35,8 +34,7 @@ export class MoviesList extends PureComponent {
           {filmsToBeShown.map((film) => (
             <SmallMovieCard
               key={film.id}
-              film={film}
-              onHoverCard={onActiveItem} />
+              film={film} />
           ))}
         </div>
 

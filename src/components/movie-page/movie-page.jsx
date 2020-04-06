@@ -5,14 +5,16 @@ import {Redirect} from 'react-router-dom';
 import {MovieCard} from '../movie-card/movie-card.jsx';
 import {MoviesListContainer} from '../movies-list/movies-list.jsx';
 import {Footer} from '../footer/footer.jsx';
-import {makeFilmByIdSelector} from '../../selectors/films/films';
+import {getFilmByIdSelector} from '../../selectors/films/films';
 import {RoutePaths} from '../../constants/route-paths.js';
 
 export const MoviePage = ({film}) => {
+  // TODO загружать если нету фильма
   if (!film) {
     return <Redirect to={RoutePaths.MAIN} />;
   }
 
+  // TODO брать id из url
   return (
     <Fragment>
       <MovieCard
@@ -40,14 +42,10 @@ MoviePage.propTypes = {
   film: PropTypes.object
 };
 
-const makeMapStateToProps = () => {
-  const getFilmByIdSelector = makeFilmByIdSelector();
-  const mapStateToProps = (state, props) => ({
-    film: getFilmByIdSelector(state, props)
-  });
-  return mapStateToProps;
-};
+const mapStateToProps = (state, props) => ({
+  film: getFilmByIdSelector(state, props)
+});
 
 export const MoviePageContainer = connect(
-    makeMapStateToProps
+    mapStateToProps
 )(MoviePage);
