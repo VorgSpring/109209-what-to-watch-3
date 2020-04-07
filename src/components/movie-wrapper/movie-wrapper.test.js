@@ -1,22 +1,40 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
 import {MovieWrapper} from './movie-wrapper.jsx';
 import renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
-import {state} from '../../mocks/state';
-import configureStore from 'redux-mock-store';
+
+
+jest.mock(`../header/header.jsx`, () => ({
+  Header() {
+    return <main-header />;
+  }
+}));
 
 describe(`MovieWrapper`, () => {
   it(`should renders correctly`, () => {
-    const mockStore = configureStore([]);
-    const store = mockStore(state);
-
     const tree = renderer.create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <MovieWrapper />
-          </BrowserRouter>
-        </Provider>
+        <MovieWrapper />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly with render props`, () => {
+    const tree = renderer.create(
+        <MovieWrapper
+          renderNav={
+            ()=><div>blah-blah</div>
+          }
+        />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly with children`, () => {
+    const tree = renderer.create(
+        <MovieWrapper>
+          <div>blah-blah</div>
+        </MovieWrapper>
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

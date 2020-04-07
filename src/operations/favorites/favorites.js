@@ -3,13 +3,13 @@ import {
   changeFavoritesSuccess,
   changeFavoritesError
 } from '../../actions/favorites/favorites';
-import {ApiPaths} from '../../constants/api';
+import {getLinkChangeFavoriteStatus} from '../../helpers/get-links/get-links';
 import {preparedFilmData} from '../../helpers/prepared-films-data/prepared-films-data';
 
 export const sendChangeFavoriteList = (body) => (dispatch, _getState, api) => {
   dispatch(changeFavoritesRequest());
 
-  return api.post(ApiPaths.setFavorite(body))
+  return api.post(getLinkChangeFavoriteStatus(body))
   .then((response) => {
     const film = preparedFilmData(response.data);
     dispatch(changeFavoritesSuccess(film));

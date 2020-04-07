@@ -5,11 +5,20 @@ import {films} from '../../mocks/films';
 
 describe(`PromoMovieCard`, () => {
   it(`should load film after render`, () => {
-    const film = films[0];
     const loadFilmHandler = jest.fn();
 
     shallow(<PromoMovieCard
-      film={film}
+      onLoadFilm={loadFilmHandler}
+    />);
+
+    expect(loadFilmHandler).toHaveBeenCalledWith();
+  });
+
+  it(`should not load film after render, when film not empty`, () => {
+    const loadFilmHandler = jest.fn();
+
+    shallow(<PromoMovieCard
+      film={films[0]}
       onLoadFilm={loadFilmHandler}
     />);
 

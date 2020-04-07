@@ -1,25 +1,44 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
 import {MovieCard} from './movie-card.jsx';
-import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
-import {state} from '../../mocks/state';
-import configureStore from 'redux-mock-store';
 import {films} from '../../mocks/films';
+
+jest.mock(`../movie-wrapper/movie-wrapper.jsx`, () => ({
+  MovieWrapper() {
+    return <movie-wrapper />;
+  }
+}));
+
+jest.mock(`../movie-info/movie-info.jsx`, () => ({
+  MovieInfo() {
+    return <movie-info />;
+  }
+}));
+
+jest.mock(`../movie-poster/movie-poster.jsx`, () => ({
+  MoviePoster() {
+    return <movie-poster />;
+  }
+}));
+
+jest.mock(`../movie-buttons/movie-buttons.jsx`, () => ({
+  MovieButtonsContainer() {
+    return <movie-buttons />;
+  }
+}));
+
+jest.mock(`../movie-tabs/movie-tabs.jsx`, () => ({
+  MovieTabsWrapper() {
+    return <movie-tabs />;
+  }
+}));
 
 describe(`MovieCard`, () => {
   it(`should renders correctly`, () => {
-    const mockStore = configureStore([]);
-    const store = mockStore(state);
-
     const tree = renderer.create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <MovieCard
-              film={films[0]}
-            />
-          </BrowserRouter>
-        </Provider>
+        <MovieCard
+          film={films[0]}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

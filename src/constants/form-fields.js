@@ -1,4 +1,6 @@
 export const FormFields = {
   EMAIL: `email`,
-  PASSWORD: `password`
+  PASSWORD: `password`,
+  COMMENT: `comment`,
+  RATING: `rating`
 };

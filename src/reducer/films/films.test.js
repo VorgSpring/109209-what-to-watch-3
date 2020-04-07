@@ -12,7 +12,7 @@ describe(`reducer films`, () => {
     expect(reducer(undefined, {})).toEqual({
       isLoading: false,
       isError: false,
-      films: []
+      films: null
     });
   });
 
@@ -24,7 +24,7 @@ describe(`reducer films`, () => {
     expect(reducer(undefined, action)).toEqual({
       isLoading: true,
       isError: false,
-      films: []
+      films: null
     });
   });
 
@@ -49,7 +49,7 @@ describe(`reducer films`, () => {
     expect(reducer(undefined, action)).toEqual({
       isLoading: false,
       isError: true,
-      films: []
+      films: null
     });
   });
 

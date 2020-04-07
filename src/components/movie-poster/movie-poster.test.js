@@ -10,4 +10,30 @@ describe(`MoviePoster`, () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it(`should renders correctly big poster`, () => {
+    const tree = renderer.create(
+        <MoviePoster big />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly small poster`, () => {
+    const tree = renderer.create(
+        <MoviePoster small />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly with children`, () => {
+    const tree = renderer.create(
+        <MoviePoster>
+          <div>blah-blah</div>
+        </MoviePoster>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

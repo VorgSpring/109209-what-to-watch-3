@@ -29,11 +29,15 @@ export const state = {
     isLoading: false,
     isError: false,
     reviews: {
-      1: review
+      1: [review]
     }
   },
   player: {
     isShow: false,
     filmId: null
+  },
+  review: {
+    isSending: false,
+    errorMessage: null
   }
 };

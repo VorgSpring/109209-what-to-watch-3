@@ -25,7 +25,9 @@ export class SingInForm extends PureComponent {
       authorization
     } = this.props;
 
-    if (validate()) {
+    const isValid = validate();
+
+    if (isValid) {
       authorization(data);
     }
   }

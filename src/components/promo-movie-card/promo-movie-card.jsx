@@ -41,30 +41,34 @@ export class PromoMovieCard extends PureComponent {
           name={name}
           bgImage={bgImage}
         >
-          <MoviePoster
-            name={name}
-            poster={poster}
-          >
-            <div className='movie-card__desc'>
-              <MovieInfo
-                name={name}
-                genre={genre}
-                released={released}
-              />
+          <div className='movie-card__info'>
+            <MoviePoster
+              name={name}
+              poster={poster}
+            >
+              <div className='movie-card__desc'>
+                <MovieInfo
+                  name={name}
+                  genre={genre}
+                  released={released}
+                />
 
-              <MovieButtonsContainer
-                filmId={id}
-                isFavorite={isFavorite}
-              />
-            </div>
-          </MoviePoster>
+                <MovieButtonsContainer
+                  filmId={id}
+                  isFavorite={isFavorite}
+                />
+              </div>
+            </MoviePoster>
+          </div>
         </MovieWrapper>
-
-
       </section>
     );
   }
 }
+
+PromoMovieCard.defaultProps = {
+  film: null
+};
 
 PromoMovieCard.propTypes = {
   film: PropTypes.shape({

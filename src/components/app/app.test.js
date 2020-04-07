@@ -28,6 +28,12 @@ jest.mock(`../movie-player/movie-player.jsx`, () => ({
   }
 }));
 
+jest.mock(`../add-review-page/add-review-page.jsx`, () => ({
+  AddReviewPageContainer() {
+    return <add-review-page />;
+  }
+}));
+
 describe(`App`, () => {
   it(`should renders main-page`, () => {
     const tree = renderer.create(
@@ -52,6 +58,16 @@ describe(`App`, () => {
   it(`should renders sing-in-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.SING_IN]}>
+          <App />
+        </MemoryRouter>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders add-review-page`, () => {
+    const tree = renderer.create(
+        <MemoryRouter initialEntries={[RoutePaths.REVIEW]}>
           <App />
         </MemoryRouter>
     ).toJSON();

@@ -7,17 +7,18 @@ describe(`SingInForm`, () => {
     email: `blah`,
     password: `blah`
   };
-  const errors = {
-    email: null,
-    password: null
-  };
-  const responseError = null;
   const isLoading = false;
   const authorization = () => {};
   const onChange = () => {};
   const validate = () => {};
 
   it(`should renders correctly`, () => {
+    const errors = {
+      email: null,
+      password: null
+    };
+    const responseError = null;
+
     const tree = renderer.create(
         <SingInForm
           data={data}
@@ -38,12 +39,13 @@ describe(`SingInForm`, () => {
       email: `blah`,
       password: `blah`
     };
+    const notEmptyResponseError = `blah-blah`;
 
     const tree = renderer.create(
         <SingInForm
           data={data}
           errors={notEmptyErrors}
-          responseError={responseError}
+          responseError={notEmptyResponseError}
           isLoading={isLoading}
           authorization={authorization}
           onChange={onChange}

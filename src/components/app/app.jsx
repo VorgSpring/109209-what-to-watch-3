@@ -4,6 +4,7 @@ import {MainPage} from '../main-page/main-page.jsx';
 import {SingInPageContainer} from '../sign-in-page/sign-in-page.jsx';
 import {MoviePageContainer} from '../movie-page/movie-page.jsx';
 import {MoviePlayerContainer} from '../movie-player/movie-player.jsx';
+import {AddReviewPageContainer} from '../add-review-page/add-review-page.jsx';
 import {RoutePaths} from '../../constants/route-paths';
 
 export const App = () => (
@@ -25,6 +26,12 @@ export const App = () => (
         exact
         path={RoutePaths.SING_IN}
         component={SingInPageContainer}
+      />
+
+      <Route
+        exact
+        path={RoutePaths.REVIEW}
+        component={AddReviewPageContainer}
       />
     </Switch>
 

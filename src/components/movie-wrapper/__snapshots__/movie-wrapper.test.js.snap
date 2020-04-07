@@ -10,56 +10,41 @@ Array [
       src=""
     />
   </div>,
-  <h1
-    className="visually-hidden"
+  <main-header />,
+]
+`;
+
+exports[`MovieWrapper should renders correctly with children 1`] = `
+Array [
+  <div
+    className="movie-card__bg"
   >
-    WTW
-  </h1>,
-  <header
-    className="page-header movie-card__head"
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <div
-      className="user-block"
-    >
-      <div
-        className="user-block__avatar"
-      >
-        <img
-          alt="User avatar"
-          height="63"
-          src="img/avatar.jpg"
-          width="63"
-        />
-      </div>
-    </div>
-  </header>,
+    <img
+      alt=""
+      src=""
+    />
+  </div>,
+  <main-header />,
   <div
     className="movie-card__wrap"
-  />,
+  >
+    <div>
+      blah-blah
+    </div>
+  </div>,
+]
+`;
+
+exports[`MovieWrapper should renders correctly with render props 1`] = `
+Array [
+  <div
+    className="movie-card__bg"
+  >
+    <img
+      alt=""
+      src=""
+    />
+  </div>,
+  <main-header />,
 ]
 `;

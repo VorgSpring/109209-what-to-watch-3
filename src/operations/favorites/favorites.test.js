@@ -6,7 +6,7 @@ import {
   CHANGE_FAVORITES_SUCCESS,
   CHANGE_FAVORITES_ERROR,
 } from '../../constants/actions-type';
-import {ApiPaths} from '../../constants/api';
+import {getLinkChangeFavoriteStatus} from '../../helpers/get-links/get-links';
 import {filmByServer} from '../../mocks/films';
 
 
@@ -37,7 +37,7 @@ describe(`favorites operation`, () => {
 
   it(`should change favorite list`, function () {
     apiMock
-      .onPost(ApiPaths.setFavorite(data))
+      .onPost(getLinkChangeFavoriteStatus(data))
       .reply(200, filmByServer);
 
     return sendChangeFavoriteListLoader(dispatch, jest.fn(), api)
@@ -79,7 +79,7 @@ describe(`favorites operation`, () => {
     const errorMessage = `error`;
 
     apiMock
-      .onPost(ApiPaths.setFavorite(data))
+      .onPost(getLinkChangeFavoriteStatus(data))
       .reply(() => Promise.reject({
         response: {
           data: {

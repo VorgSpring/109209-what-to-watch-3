@@ -1,6 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MoviesList should renders correctly 1`] = `
+Array [
+  <div
+    className="catalog__movies-list"
+  >
+    <small-movie-card />
+    <small-movie-card />
+    <small-movie-card />
+  </div>,
+  <div
+    className="catalog__more"
+  >
+    <button
+      className="catalog__button"
+      onClick={[Function]}
+      type="button"
+    >
+      Show more
+    </button>
+  </div>,
+]
+`;
+
+exports[`MoviesList should renders correctly without films 1`] = `null`;
+
+exports[`MoviesList should renders correctly without show more button 1`] = `
 <div
   className="catalog__movies-list"
 >

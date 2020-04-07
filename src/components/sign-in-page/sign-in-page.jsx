@@ -11,7 +11,7 @@ import {RoutePaths} from '../../constants/route-paths';
 export const SingInPage = ({isAuthorizationRequired}) => (
   isAuthorizationRequired ? (
     <div className='user-page'>
-      <Header isMovieCard={false} />
+      <Header user />
 
       <div className='sign-in user-page__content'>
         <SingInFormContainer />

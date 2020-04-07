@@ -27,6 +27,7 @@ export const MovieCard = ({film}) => {
         <MovieWrapper
           name={name}
           bgImage={bgImage}
+          movieType
         >
           <div className='movie-card__desc'>
             <MovieInfo
@@ -45,13 +46,15 @@ export const MovieCard = ({film}) => {
       </div>
 
       <div className='movie-card__wrap movie-card__translate-top'>
-        <MoviePoster
-          name={name}
-          poster={poster}
-          isBig
-        >
-          <MovieTabsWrapper film={film} />
-        </MoviePoster>
+        <div className='movie-card__info'>
+          <MoviePoster
+            name={name}
+            poster={poster}
+            isBig
+          >
+            <MovieTabsWrapper film={film} />
+          </MoviePoster>
+        </div>
       </div>
     </section>
   );

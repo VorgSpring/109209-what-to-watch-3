@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddReviewPage should renders correctly 1`] = `
+<section
+  className="movie-card movie-card--full"
+  style={
+    Object {
+      "backgroundColor": "#fff",
+    }
+  }
+>
+  <div
+    className="movie-card__header"
+  >
+    <movie-wrapper />
+    <movie-poster />
+  </div>
+  <review-form />
+</section>
+`;
+
+exports[`AddReviewPage should renders correctly without film 1`] = `null`;

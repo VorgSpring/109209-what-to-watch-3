@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 jest.mock(`../../components/header/header.jsx`, () => ({
   Header() {
-    return <header />;
+    return <main-header />;
   }
 }));
 
@@ -18,7 +18,7 @@ jest.mock(`../../components/sign-in-form/sign-in-form.jsx`, () => ({
 
 jest.mock(`../../components/footer/footer.jsx`, () => ({
   Footer() {
-    return <footer />;
+    return <main-footer />;
   }
 }));
 
@@ -27,7 +27,19 @@ describe(`SingInPage`, () => {
     const tree = renderer.create(
         <BrowserRouter>
           <SingInPage
-            isAuthorizationRequired={true}
+            isAuthorizationRequired
+          />
+        </BrowserRouter>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly authorization user`, () => {
+    const tree = renderer.create(
+        <BrowserRouter>
+          <SingInPage
+            isAuthorizationRequired={false}
           />
         </BrowserRouter>
     ).toJSON();

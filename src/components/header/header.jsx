@@ -4,11 +4,17 @@ import {Link} from 'react-router-dom';
 import {UserBlockContainer} from '../user-block/user-block.jsx';
 import {RoutePaths} from '../../constants/route-paths';
 
-export const Header = ({pageTitle, isMovieCard}) => (
+export const Header = ({title, movieType, userType, showUserBlok, children}) => (
   <Fragment>
     <h1 className='visually-hidden'>WTW</h1>
 
-    <header className={`page-header ${isMovieCard ? `movie-card` : `user-page`}__head`}>
+    <header
+      className={
+        `page-header
+        ${movieType && `movie-card__head`}
+        ${userType && `user-page__head`}`
+      }
+    >
       <div className='logo'>
         <Link className='logo__link' to={RoutePaths.MAIN}>
           <span className='logo__letter logo__letter--1'>W</span>
@@ -17,21 +23,31 @@ export const Header = ({pageTitle, isMovieCard}) => (
         </Link>
       </div>
 
-      {pageTitle && <h1 className='page-title user-page__title'>
-        {pageTitle}
+      {title && <h1 className='page-title user-page__title'>
+        {title}
       </h1>}
 
-      {isMovieCard && <UserBlockContainer />}
+      {children && <Fragment>
+        {children}
+      </Fragment>}
+
+      {showUserBlok && <UserBlockContainer />}
     </header>
   </Fragment>
 );
 
 Header.defaultProps = {
-  pageTitle: null,
-  isMovieCard: true
+  title: null,
+  movieType: false,
+  userType: false,
+  showUserBlok: false,
+  children: null
 };
 
 Header.propTypes = {
-  pageTitle: PropTypes.string,
-  isMovieCard: PropTypes.bool
+  title: PropTypes.string,
+  movieType: PropTypes.bool,
+  userType: PropTypes.bool,
+  showUserBlok: PropTypes.bool,
+  children: PropTypes.node
 };

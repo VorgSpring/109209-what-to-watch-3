@@ -1,38 +1,51 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
 import {PromoMovieCard} from './promo-movie-card.jsx';
 import renderer from 'react-test-renderer';
 import {films} from '../../mocks/films';
-import {Provider} from 'react-redux';
-import {state} from '../../mocks/state';
-import configureStore from 'redux-mock-store';
+
+jest.mock(`../movie-wrapper/movie-wrapper.jsx`, () => ({
+  MovieWrapper() {
+    return <movie-wrapper />;
+  }
+}));
+
+jest.mock(`../movie-info/movie-info.jsx`, () => ({
+  MovieInfo() {
+    return <movie-info />;
+  }
+}));
+
+jest.mock(`../movie-poster/movie-poster.jsx`, () => ({
+  MoviePoster() {
+    return <movie-poster />;
+  }
+}));
+
+jest.mock(`../movie-buttons/movie-buttons.jsx`, () => ({
+  MovieButtonsContainer() {
+    return <movie-review />;
+  }
+}));
 
 describe(`PromoMovieCard`, () => {
-  it(`should renders correctly`, () => {
-    const film = films[0];
-    const playHandler = () => {};
-    const changeFavoritesListHandler = () => {};
-    const loadFilmHandler = () => {};
-    const mockStore = configureStore([]);
-    const store = mockStore(state);
-    const history = {
-      push: () => {}
-    };
+  const loadFilmHandler = () => {};
 
+  it(`should renders correctly`, () => {
     const tree = renderer.create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <PromoMovieCard
-              film={film}
-              onPlay={playHandler}
-              onChangeFavoritesList={changeFavoritesListHandler}
-              onLoadFilm={loadFilmHandler}
-              isFavorite={false}
-              isAuthorizationRequired={false}
-              history={history}
-            />
-          </BrowserRouter>
-        </Provider>
+        <PromoMovieCard
+          film={films[0]}
+          onLoadFilm={loadFilmHandler}
+        />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly without film`, () => {
+    const tree = renderer.create(
+        <PromoMovieCard
+          onLoadFilm={loadFilmHandler}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

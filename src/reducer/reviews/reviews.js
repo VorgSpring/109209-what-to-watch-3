@@ -1,7 +1,8 @@
 import {
   LOAD_REVIEWS_REQUEST,
   LOAD_REVIEWS_SUCCESS,
-  LOAD_REVIEWS_ERROR
+  LOAD_REVIEWS_ERROR,
+  SEND_REVIEW_SUCCESS,
 } from '../../constants/actions-type';
 
 const initState = {
@@ -27,7 +28,7 @@ export default (state = initState, action) => {
             isLoading: false,
             reviews: Object.assign(
                 {}, state.reviews, {
-                  [action.payload.filmId]: action.payload.review
+                  [action.payload.filmId]: action.payload.reviews
                 }
             )
           }
@@ -41,6 +42,17 @@ export default (state = initState, action) => {
             reviews: Object.assign(
                 {}, state.reviews, {
                   [action.payload.filmId]: []
+                }
+            )
+          }
+      );
+
+    case (SEND_REVIEW_SUCCESS):
+      return Object.assign(
+          {}, state, {
+            reviews: Object.assign(
+                {}, state.reviews, {
+                  [action.payload.filmId]: action.payload.reviews
                 }
             )
           }

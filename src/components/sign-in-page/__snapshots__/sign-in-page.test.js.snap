@@ -4,12 +4,14 @@ exports[`SingInPage should renders correctly 1`] = `
 <div
   className="user-page"
 >
-  <header />
+  <main-header />
   <div
     className="sign-in user-page__content"
   >
     <sing-in-form />
   </div>
-  <footer />
+  <main-footer />
 </div>
 `;
+
+exports[`SingInPage should renders correctly authorization user 1`] = `null`;
