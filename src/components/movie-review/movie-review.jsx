@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {preparedDateData} from '../../helpers/prepared-date-data/prepared-date-data';
 
 export const MovieReview = ({
   user, rating, comment, date
@@ -11,7 +12,7 @@ export const MovieReview = ({
       <footer className='review__details'>
         <cite className='review__author'>{user.name}</cite>
         <time className='review__date' dateTime={date}>
-          {date}
+          {preparedDateData(date)}
         </time>
       </footer>
     </blockquote>

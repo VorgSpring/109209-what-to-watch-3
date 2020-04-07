@@ -2,7 +2,8 @@ import reducer from './reviews';
 import {
   LOAD_REVIEWS_REQUEST,
   LOAD_REVIEWS_SUCCESS,
-  LOAD_REVIEWS_ERROR
+  LOAD_REVIEWS_ERROR,
+  SEND_REVIEW_SUCCESS
 } from '../../constants/actions-type';
 import {review} from '../../mocks/review';
 
@@ -32,7 +33,7 @@ describe(`reducer reviews`, () => {
       type: LOAD_REVIEWS_SUCCESS,
       payload: {
         filmId: 1,
-        review
+        reviews: [review]
       }
     };
 
@@ -40,7 +41,7 @@ describe(`reducer reviews`, () => {
       isLoading: false,
       isError: false,
       reviews: {
-        1: review
+        1: [review]
       }
     });
   });
@@ -58,6 +59,24 @@ describe(`reducer reviews`, () => {
       isError: true,
       reviews: {
         1: []
+      }
+    });
+  });
+
+  it(`should handle LOAD_REVIEWS_REQUEST`, () => {
+    const action = {
+      type: SEND_REVIEW_SUCCESS,
+      payload: {
+        filmId: 1,
+        reviews: [review]
+      }
+    };
+
+    expect(reducer(undefined, action)).toEqual({
+      isLoading: false,
+      isError: false,
+      reviews: {
+        1: [review]
       }
     });
   });

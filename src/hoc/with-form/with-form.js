@@ -8,14 +8,14 @@ export const withForm = (Component, initialFields = []) => {
       super(props);
 
       this.state = {
-        data: initialFields.reduce((acc, field) =>(
+        data: initialFields.reduce((acc, field) => (
           Object.assign(
               {}, acc, {
                 [field]: ``
               }
           )
         ), {}),
-        errors: initialFields.reduce((acc, field) =>(
+        errors: initialFields.reduce((acc, field) => (
           Object.assign(
               {}, acc, {
                 [field]: null

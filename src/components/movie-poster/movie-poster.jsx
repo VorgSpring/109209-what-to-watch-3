@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-export const MoviePoster = ({poster, name, isBig, children}) => (
-  <div className='movie-card__info'>
-    <div className={`movie-card__poster ${isBig && `movie-card__poster--big`}`}>
+export const MoviePoster = ({
+  poster,
+  name,
+  big,
+  small,
+  children
+}) => (
+  <Fragment>
+    <div
+      className={
+        `movie-card__poster
+        ${big && `movie-card__poster--big`}
+        ${small && `movie-card__poster--small`}
+      `}
+    >
       <img
         src={poster}
         alt={`${name} poster`}
@@ -11,20 +23,24 @@ export const MoviePoster = ({poster, name, isBig, children}) => (
         height='327'
       />
     </div>
-    {children}
-  </div>
+    {children && <Fragment>
+      {children}
+    </Fragment>}
+  </Fragment>
 );
 
 MoviePoster.defaultProps = {
   poster: ``,
   name: ``,
-  isBig: false,
-  children: []
+  big: false,
+  small: false,
+  children: null
 };
 
 MoviePoster.propTypes = {
   poster: PropTypes.string,
   name: PropTypes.string,
-  isBig: PropTypes.bool,
+  big: PropTypes.bool,
+  small: PropTypes.bool,
   children: PropTypes.node
 };

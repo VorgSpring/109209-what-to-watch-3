@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {VideoPlayer} from '../video-player/video-player.jsx';
-import {LinkPaths} from '../../constants/route-paths';
+import {getFilmPathLink} from '../../helpers/get-links/get-links';
 import {withVideoPlayer} from '../../hoc/with-video-player/with-video-player';
 
 export const SmallMovieCardComponent = ({
@@ -35,7 +35,7 @@ export const SmallMovieCardComponent = ({
       <h3 className='small-movie-card__title'>
         <Link
           className='small-movie-card__link'
-          to={LinkPaths.getFilmLink(id)}
+          to={getFilmPathLink(id)}
         >
           {name}
         </Link>

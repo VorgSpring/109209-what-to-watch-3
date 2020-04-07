@@ -79,6 +79,9 @@ exports[`SingInForm should renders correctly with errors 1`] = `
     <p>
       blah
     </p>
+    <p>
+      blah-blah
+    </p>
   </div>
   <div
     className="sign-in__fields"

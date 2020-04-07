@@ -1,10 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import {isAuthorizationSelector} from '../../selectors/authorization/authorization';
 import {sendChangeFavoriteList} from '../../operations/favorites/favorites';
 import {RoutePaths} from '../../constants/route-paths';
+import {getReviewPathLink} from '../../helpers/get-links/get-links';
 import {
   FavoriteStatus,
   IconFavoriteButton
@@ -57,7 +58,11 @@ export class MovieButtons extends PureComponent {
   }
 
   render() {
-    const {isFull} = this.props;
+    const {
+      filmId,
+      isFull,
+      isAuthorizationRequired
+    } = this.props;
 
     return (
       <div className='movie-card__buttons'>
@@ -81,7 +86,10 @@ export class MovieButtons extends PureComponent {
           </svg>
           <span>My list</span>
         </button>
-        {isFull && <a href='add-review.html' className='btn movie-card__button'>Add review</a>}
+        {isFull && !isAuthorizationRequired &&
+          <Link to={getReviewPathLink(filmId)} className='btn movie-card__button'>
+            Add review
+          </Link>}
       </div>
     );
   }

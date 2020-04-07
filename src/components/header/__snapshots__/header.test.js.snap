@@ -8,7 +8,9 @@ Array [
     WTW
   </h1>,
   <header
-    className="page-header movie-card__head"
+    className="page-header
+        false
+        false"
   >
     <div
       className="logo"
@@ -35,20 +37,220 @@ Array [
         </span>
       </a>
     </div>
+  </header>,
+]
+`;
+
+exports[`Header should renders correctly movie type 1`] = `
+Array [
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header
+        movie-card__head
+        false"
+  >
     <div
-      className="user-block"
+      className="logo"
     >
-      <div
-        className="user-block__avatar"
+      <a
+        className="logo__link"
+        href="/"
+        onClick={[Function]}
       >
-        <img
-          alt="User avatar"
-          height="63"
-          src="img/avatar.jpg"
-          width="63"
-        />
-      </div>
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
     </div>
+  </header>,
+]
+`;
+
+exports[`Header should renders correctly user type 1`] = `
+Array [
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header
+        false
+        user-page__head"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+  </header>,
+]
+`;
+
+exports[`Header should renders correctly with children 1`] = `
+Array [
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header
+        false
+        false"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div>
+      blah-blah
+    </div>
+  </header>,
+]
+`;
+
+exports[`Header should renders correctly with show user block 1`] = `
+Array [
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header
+        false
+        false"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <user-block />
+  </header>,
+]
+`;
+
+exports[`Header should renders correctly with title 1`] = `
+Array [
+  <h1
+    className="visually-hidden"
+  >
+    WTW
+  </h1>,
+  <header
+    className="page-header
+        false
+        false"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <h1
+      className="page-title user-page__title"
+    >
+      blah-blah
+    </h1>
   </header>,
 ]
 `;

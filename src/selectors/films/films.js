@@ -12,6 +12,10 @@ export const getFilmExcludeIdSelector = (_, props) => props && props.excludeId |
 export const getMaxFilmsCountSelector = (_, props) => props && props.max || null;
 
 export const findFilmById = (films, id) => {
+  if (!films) {
+    return null;
+  }
+
   const parseId = parseInt(id, 10);
   if (isNaN(parseId)) {
     return null;

@@ -32,10 +32,19 @@ export class MovieReviews extends PureComponent {
   render() {
     const {reviews} = this.props;
 
+    if (!reviews) {
+      return <div className='movie-card__reviews movie-card__row' />;
+    }
+
     return (
       <div className='movie-card__reviews movie-card__row'>
         <div className='movie-card__reviews-col'>
-          {reviews && reviews.map((review) => (
+          {reviews.even.map((review) => (
+            <MovieReview key={review.id} {...review} />
+          ))}
+        </div>
+        <div className='movie-card__reviews-col'>
+          {reviews.odd.map((review) => (
             <MovieReview key={review.id} {...review} />
           ))}
         </div>
@@ -50,18 +59,32 @@ MovieReviews.defaultProps = {
 
 MovieReviews.propTypes = {
   filmId: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        user: PropTypes.shape({
+  reviews: PropTypes.shape({
+    odd: PropTypes.arrayOf(
+        PropTypes.shape({
           id: PropTypes.number.isRequired,
-          name: PropTypes.string.isRequired
-        }).isRequired,
-        rating: PropTypes.number.isRequired,
-        comment: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired
-      })
-  ),
+          user: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired
+          }).isRequired,
+          rating: PropTypes.number.isRequired,
+          comment: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired
+        })
+    ),
+    even: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          user: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired
+          }).isRequired,
+          rating: PropTypes.number.isRequired,
+          comment: PropTypes.string.isRequired,
+          date: PropTypes.string.isRequired
+        })
+    )
+  }),
   onLoadReviews: PropTypes.func.isRequired
 };
 

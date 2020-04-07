@@ -1,5 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {
+  prepareTimeDataFromMinutes
+} from '../../helpers/prepared-time-data/prepared-time-data';
 
 export const MovieDetails = ({film}) => {
   const {director, starring, runTime, genre, released} = film;
@@ -31,7 +34,9 @@ export const MovieDetails = ({film}) => {
       <div className='movie-card__text-col'>
         <p className='movie-card__details-item'>
           <strong className='movie-card__details-name'>Run Time</strong>
-          <span className='movie-card__details-value'>{runTime}</span>
+          <span className='movie-card__details-value'>
+            {prepareTimeDataFromMinutes(runTime)}
+          </span>
         </p>
         <p className='movie-card__details-item'>
           <strong className='movie-card__details-name'>Genre</strong>

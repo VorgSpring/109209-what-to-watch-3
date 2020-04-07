@@ -20,3 +20,5 @@ export const Rating = {
     MAX: 11
   }
 };
+
+export const RATING_STARS_COUNT = 5;

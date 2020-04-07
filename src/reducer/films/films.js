@@ -8,7 +8,7 @@ import {
 const initState = {
   isLoading: false,
   isError: false,
-  films: []
+  films: null
 };
 
 export default (state = initState, action) => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {VideoPlayer} from '../video-player/video-player.jsx';
 import {PlayerButton} from '../../constants/player';
-import {prepareTimeData} from '../../helpers/prepare-time-data/prepare-time-data';
+import {prepareTimeDataFromSeconds} from '../../helpers/prepared-time-data/prepared-time-data';
 import {withVideoPlayer} from '../../hoc/with-video-player/with-video-player';
 import {isShowPlayerSelector} from '../../selectors/player/player';
 import {getPlayedFilmSelector} from '../../selectors/films/films';
@@ -61,7 +61,7 @@ export const MoviePlayerComponent = ({
             </div>
           </div>
           <div className='player__time-value'>
-            {prepareTimeData(currentTime)}
+            {prepareTimeDataFromSeconds(currentTime)}
           </div>
         </div>
 

@@ -2,29 +2,34 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Header} from '../header/header.jsx';
 
-export const MovieWrapper = ({children, bgImage, name}) => (
+export const MovieWrapper = ({children, bgImage, name, movieType, renderNav}) => (
   <Fragment>
     <div className='movie-card__bg'>
       <img src={bgImage} alt={name} />
     </div>
 
-    <Header />
+    <Header movieType={movieType} showUserBlok>
+      {renderNav()}
+    </Header>
 
-    <div className='movie-card__wrap'>
+    {children && <div className='movie-card__wrap'>
       {children}
-    </div>
+    </div>}
   </Fragment>
 );
 
 MovieWrapper.defaultProps = {
-  children: [],
+  children: null,
   name: ``,
   bgImage: ``,
-  isMovieCard: false
+  movieType: false,
+  renderNav: () => null
 };
 
 MovieWrapper.propTypes = {
   bgImage: PropTypes.string,
   name: PropTypes.string,
-  children: PropTypes.node
+  movieType: PropTypes.bool,
+  children: PropTypes.node,
+  renderNav: PropTypes.func
 };

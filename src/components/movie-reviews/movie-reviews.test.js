@@ -1,26 +1,35 @@
 import React from 'react';
 import {MovieReviews} from './movie-reviews.jsx';
 import renderer from 'react-test-renderer';
-import {review} from '../../mocks/review';
-import {Provider} from 'react-redux';
-import {state} from '../../mocks/state';
-import configureStore from 'redux-mock-store';
+import {reviews} from '../../mocks/reviews';
+
+jest.mock(`../movie-review/movie-review.jsx`, () => ({
+  MovieReview() {
+    return <movie-review />;
+  }
+}));
 
 describe(`MovieReviews`, () => {
-  it(`should renders correctly`, () => {
-    const reviews = [review];
-    const onLoadReviews = () => {};
-    const mockStore = configureStore([]);
-    const store = mockStore(state);
+  const onLoadReviews = () => {};
 
+  it(`should renders correctly`, () => {
     const tree = renderer.create(
-        <Provider store={store}>
-          <MovieReviews
-            filmId={1}
-            reviews={reviews}
-            onLoadReviews={onLoadReviews}
-          />
-        </Provider>
+        <MovieReviews
+          filmId={1}
+          reviews={reviews}
+          onLoadReviews={onLoadReviews}
+        />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly without reviews`, () => {
+    const tree = renderer.create(
+        <MovieReviews
+          filmId={1}
+          onLoadReviews={onLoadReviews}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
