@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddReviewPage should renders correctly 1`] = `
+<div
+  className="user-page"
+>
+  <main-header />
+  <section
+    className="catalog"
+  >
+    <h2
+      className="catalog__title visually-hidden"
+    >
+      Catalog
+    </h2>
+    <favorite-movies-list />
+  </section>
+  <main-footer />
+</div>
+`;

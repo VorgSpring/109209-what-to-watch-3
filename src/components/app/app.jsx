@@ -5,6 +5,7 @@ import {SingInPageContainer} from '../sign-in-page/sign-in-page.jsx';
 import {MoviePageContainer} from '../movie-page/movie-page.jsx';
 import {MoviePlayerContainer} from '../movie-player/movie-player.jsx';
 import {AddReviewPageContainer} from '../add-review-page/add-review-page.jsx';
+import {FavoriteMoviesPage} from '../favorite-movies-page/favorite-movies-page.jsx';
 import {RoutePaths} from '../../constants/route-paths';
 
 export const App = () => (
@@ -32,6 +33,12 @@ export const App = () => (
         exact
         path={RoutePaths.REVIEW}
         component={AddReviewPageContainer}
+      />
+
+      <Route
+        exact
+        path={RoutePaths.FAVORITE}
+        component={FavoriteMoviesPage}
       />
     </Switch>
 

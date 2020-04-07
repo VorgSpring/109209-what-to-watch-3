@@ -30,8 +30,8 @@ export class MoviesList extends PureComponent {
       return null;
     }
 
-    const filmsToBeShown = films.slice(0, showCount);
-    const isShowMore = showCount < films.length;
+    const filmsToBeShown = showCount ? films.slice(0, showCount) : films;
+    const isShowMore = showCount && showCount < films.length;
 
     return (
       <Fragment>
@@ -55,7 +55,8 @@ export class MoviesList extends PureComponent {
 }
 
 MoviesList.defaultProps = {
-  films: null
+  films: null,
+  showCount: false
 };
 
 MoviesList.propTypes = {
@@ -64,7 +65,7 @@ MoviesList.propTypes = {
         name: PropTypes.string.isRequired
       })
   ),
-  showCount: PropTypes.number.isRequired,
+  showCount: PropTypes.number,
   onLoadFilms: PropTypes.func.isRequired,
   onSetMoreItemsToShow: PropTypes.func.isRequired
 };

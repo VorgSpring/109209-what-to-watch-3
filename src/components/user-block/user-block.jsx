@@ -21,14 +21,17 @@ export class UserBlock extends PureComponent {
     return (
       <div className="user-block">
         {user ? (
-          <div className="user-block__avatar">
+          <Link
+            to={RoutePaths.FAVORITE}
+            className="user-block__avatar"
+          >
             <img
               src={user.avatarUrl}
               alt="User avatar"
               width="63"
               height="63"
             />
-          </div>
+          </Link>
         ) : (
           <Link
             to={RoutePaths.SING_IN}

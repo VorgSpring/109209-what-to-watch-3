@@ -22,6 +22,6 @@ describe(`PromoMovieCard`, () => {
       onLoadFilm={loadFilmHandler}
     />);
 
-    expect(loadFilmHandler).toHaveBeenCalledWith();
+    expect(loadFilmHandler).not.toHaveBeenCalledWith();
   });
 });

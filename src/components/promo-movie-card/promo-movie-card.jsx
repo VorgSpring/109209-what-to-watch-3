@@ -14,7 +14,11 @@ export class PromoMovieCard extends PureComponent {
   }
 
   componentDidMount() {
-    this.props.onLoadFilm();
+    const {film, onLoadFilm} = this.props;
+
+    if (!film) {
+      onLoadFilm();
+    }
   }
 
   render() {

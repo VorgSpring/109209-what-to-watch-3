@@ -6,7 +6,7 @@ import {RoutePaths} from '../../constants/route-paths';
 
 export const Header = ({title, movieType, userType, showUserBlok, children}) => (
   <Fragment>
-    <h1 className='visually-hidden'>WTW</h1>
+    {!userType && <h1 className='visually-hidden'>WTW</h1>}
 
     <header
       className={

@@ -18,7 +18,8 @@ export const state = {
   user,
   favorites: {
     isLoading: false,
-    isError: false
+    isError: false,
+    films
   },
   promo: {
     isLoading: false,

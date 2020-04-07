@@ -2,7 +2,8 @@ export const ApiPaths = {
   BASE_URL: `https://htmlacademy-react-2.appspot.com/wtw`,
   FILMS: `/films`,
   PROMO_MOVIE: `/films/promo`,
-  LOGIN: `/login`
+  LOGIN: `/login`,
+  FAVORITE: `/favorite`
 };
 
 export const ApiConfiguration = {

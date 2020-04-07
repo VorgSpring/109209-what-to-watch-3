@@ -7,6 +7,13 @@ Array [
 ]
 `;
 
+exports[`App should renders favorite-movies-page 1`] = `
+Array [
+  <favorite-movies-page />,
+  <movie-player />,
+]
+`;
+
 exports[`App should renders main-page 1`] = `
 Array [
   <main-page />,

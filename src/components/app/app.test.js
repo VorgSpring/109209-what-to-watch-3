@@ -34,6 +34,12 @@ jest.mock(`../add-review-page/add-review-page.jsx`, () => ({
   }
 }));
 
+jest.mock(`../favorite-movies-page/favorite-movies-page.jsx`, () => ({
+  FavoriteMoviesPage() {
+    return <favorite-movies-page />;
+  }
+}));
+
 describe(`App`, () => {
   it(`should renders main-page`, () => {
     const tree = renderer.create(
@@ -68,6 +74,16 @@ describe(`App`, () => {
   it(`should renders add-review-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.REVIEW]}>
+          <App />
+        </MemoryRouter>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders favorite-movies-page`, () => {
+    const tree = renderer.create(
+        <MemoryRouter initialEntries={[RoutePaths.FAVORITE]}>
           <App />
         </MemoryRouter>
     ).toJSON();
