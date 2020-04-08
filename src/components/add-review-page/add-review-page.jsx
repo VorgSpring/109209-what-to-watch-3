@@ -1,83 +1,61 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {MovieWrapper} from '../movie-wrapper/movie-wrapper.jsx';
 import {MoviePoster} from '../movie-poster/movie-poster.jsx';
 import {Breadcrumbs} from '../breadcrumbs/breadcrumbs.jsx';
-import {ReviewFormContainer} from '../review-form/review-form.jsx';
+import {ReviewForm} from '../review-form/review-form.jsx';
 import {getFilmByIdSelector} from '../../selectors/films/films';
-import {loadFilms} from '../../operations/films/films';
 
-export class AddReviewPage extends PureComponent {
-  componentDidMount() {
-    const {film, onLoadFilms} = this.props;
+export const AddReviewPageComponent = ({film}) => {
+  const {
+    id,
+    bgImage,
+    bgColor,
+    name,
+    poster
+  } = film;
 
-    if (!film) {
-      onLoadFilms();
-    }
-  }
+  return (
+    <section
+      className='movie-card movie-card--full'
+      style={{backgroundColor: bgColor}}
+    >
+      <div className='movie-card__header'>
+        <MovieWrapper
+          name={name}
+          bgImage={bgImage}
+          renderNav={
+            () => <Breadcrumbs id={id} name={name} />
+          }
+        />
 
-  render() {
-    const {film} = this.props;
+        <MoviePoster
+          name={name}
+          poster={poster}
+          small
+        />
+      </div>
 
-    if (!film) {
-      return null;
-    }
+      <ReviewForm filmId={id} />
+    </section>
+  );
+};
 
-    const {
-      id,
-      bgImage,
-      bgColor,
-      name,
-      poster
-    } = film;
-
-    return (
-      <section
-        className='movie-card movie-card--full'
-        style={{backgroundColor: bgColor}}
-      >
-        <div className='movie-card__header'>
-          <MovieWrapper
-            name={name}
-            bgImage={bgImage}
-            renderNav={
-              () => <Breadcrumbs id={id} name={name} />
-            }
-          />
-
-          <MoviePoster
-            name={name}
-            poster={poster}
-            small
-          />
-        </div>
-
-        <ReviewFormContainer filmId={id} />
-      </section>
-    );
-  }
-}
-
-AddReviewPage.propTypes = {
+AddReviewPageComponent.propTypes = {
   film: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     bgImage: PropTypes.string.isRequired,
     bgColor: PropTypes.string.isRequired,
-  }),
-  onLoadFilms: PropTypes.func
+  }).isRequired
 };
 
 const mapStateToProps = (state, props) => ({
   film: getFilmByIdSelector(state, props)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onLoadFilms: () => dispatch(loadFilms())
-});
-
-export const AddReviewPageContainer = connect(
-    mapStateToProps, mapDispatchToProps
-)(AddReviewPage);
+export const AddReviewPage = connect(
+    mapStateToProps
+)(AddReviewPageComponent);

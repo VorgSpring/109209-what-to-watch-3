@@ -111,6 +111,7 @@ export const withVideoPlayer = (Component) => {
     }
 
     loadVideo() {
+      this.player.current.pause();
       this.player.current.load();
     }
 

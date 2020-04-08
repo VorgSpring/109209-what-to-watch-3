@@ -1,20 +1,35 @@
-export const getReviewsByFilmIdSelector = (state, props) => {
-  const reviews = state.reviews.reviews &&
-    state.reviews.reviews[props.film.id];
+import {
+  getFilmIdSelector
+} from '../films/films';
+import {createSelector} from 'reselect';
 
-  if (!reviews) {
-    return null;
-  }
+export const getReviewsLoadedStatusSelector = (state) =>
+  state.reviews && state.reviews.isLoaded || false;
 
-  return reviews.reduce((acc, review, i) => {
-    if (i % 2) {
-      acc.odd.push(review);
-    } else {
-      acc.even.push(review);
+export const getReviewsSelector = (state) =>
+  state.reviews && state.reviews.reviews || null;
+
+export const getReviewsByFilmIdSelector = createSelector(
+    getReviewsSelector,
+    getFilmIdSelector,
+    (reviews, filmId) => {
+      if (!reviews || !reviews[filmId]) {
+        return {
+          odd: [],
+          even: []
+        };
+      }
+
+      return reviews[filmId].reduce((acc, review, i) => {
+        if (i % 2) {
+          acc.odd.push(review);
+        } else {
+          acc.even.push(review);
+        }
+        return acc;
+      }, {
+        odd: [],
+        even: []
+      });
     }
-    return acc;
-  }, {
-    odd: [],
-    even: []
-  });
-};
+);

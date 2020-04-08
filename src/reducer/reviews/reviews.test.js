@@ -10,6 +10,7 @@ import {review} from '../../mocks/review';
 describe(`reducer reviews`, () => {
   it(`should return the initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
+      isLoaded: false,
       isLoading: false,
       isError: false,
       reviews: null
@@ -22,6 +23,7 @@ describe(`reducer reviews`, () => {
     };
 
     expect(reducer(undefined, action)).toEqual({
+      isLoaded: false,
       isLoading: true,
       isError: false,
       reviews: null
@@ -38,6 +40,7 @@ describe(`reducer reviews`, () => {
     };
 
     expect(reducer(undefined, action)).toEqual({
+      isLoaded: true,
       isLoading: false,
       isError: false,
       reviews: {
@@ -46,7 +49,7 @@ describe(`reducer reviews`, () => {
     });
   });
 
-  it(`should handle LOAD_REVIEWS_REQUEST`, () => {
+  it(`should handle LOAD_REVIEWS_ERROR`, () => {
     const action = {
       type: LOAD_REVIEWS_ERROR,
       payload: {
@@ -55,15 +58,14 @@ describe(`reducer reviews`, () => {
     };
 
     expect(reducer(undefined, action)).toEqual({
+      isLoaded: false,
       isLoading: false,
       isError: true,
-      reviews: {
-        1: []
-      }
+      reviews: null
     });
   });
 
-  it(`should handle LOAD_REVIEWS_REQUEST`, () => {
+  it(`should handle SEND_REVIEW_SUCCESS`, () => {
     const action = {
       type: SEND_REVIEW_SUCCESS,
       payload: {
@@ -73,6 +75,7 @@ describe(`reducer reviews`, () => {
     };
 
     expect(reducer(undefined, action)).toEqual({
+      isLoaded: false,
       isLoading: false,
       isError: false,
       reviews: {

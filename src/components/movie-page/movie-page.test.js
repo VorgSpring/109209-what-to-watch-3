@@ -3,9 +3,9 @@ import {MoviePage} from './movie-page.jsx';
 import renderer from 'react-test-renderer';
 import {films} from '../../mocks/films';
 
-jest.mock(`../../components/movies-list/movies-list.jsx`, () => ({
-  MoviesListContainer() {
-    return <movie-list />;
+jest.mock(`../similar-movies-list/similar-movies-list.jsx`, () => ({
+  SimilarMoviesList() {
+    return <similar-movies-list />;
   }
 }));
 

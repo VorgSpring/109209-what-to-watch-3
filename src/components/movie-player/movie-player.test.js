@@ -17,6 +17,9 @@ describe(`MoviePLayer`, () => {
           toggleVideo={()=>{}}
           setFullscreen={()=>{}}
           onClosePlayer={()=>{}}
+          history={{
+            goBack() {}
+          }}
         />
     ).toJSON();
 
@@ -36,6 +39,9 @@ describe(`MoviePLayer`, () => {
           toggleVideo={()=>{}}
           setFullscreen={()=>{}}
           onClosePlayer={()=>{}}
+          history={{
+            goBack() {}
+          }}
         />
     ).toJSON();
 
@@ -54,6 +60,9 @@ describe(`MoviePLayer`, () => {
           toggleVideo={()=>{}}
           setFullscreen={()=>{}}
           onClosePlayer={()=>{}}
+          history={{
+            goBack() {}
+          }}
         />
     ).toJSON();
 

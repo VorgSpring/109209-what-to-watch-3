@@ -11,7 +11,7 @@ import {
 import {RATING_STARS_COUNT} from '../../constants/rating';
 import {createEmptyArray} from '../../helpers/create-empty-array/create-empty-array';
 
-export class ReviewForm extends PureComponent {
+export class ReviewFormComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -105,7 +105,7 @@ export class ReviewForm extends PureComponent {
   }
 }
 
-ReviewForm.propTypes = {
+ReviewFormComponent.propTypes = {
   data: PropTypes.shape({
     rating: PropTypes.string.isRequired,
     comment: PropTypes.string.isRequired,
@@ -122,19 +122,19 @@ ReviewForm.propTypes = {
 };
 
 const initialFields = [FormFields.COMMENT, FormFields.RATING];
-export const ReviewFormWrapper = withForm(ReviewForm, initialFields);
+export const ReviewFormWrapper = withForm(ReviewFormComponent, initialFields);
 
 const mapStateToProps = (state) => ({
   responseError: getErrorMessageSelector(state),
   isSending: getSendingStatusSelector(state)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch, {filmId}) => ({
   sendReview: (data) => dispatch(
-      sendReviewData(ownProps.filmId, data)
+      sendReviewData(filmId, data)
   )
 });
 
-export const ReviewFormContainer = connect(
+export const ReviewForm = connect(
     mapStateToProps, mapDispatchToProps
 )(ReviewFormWrapper);

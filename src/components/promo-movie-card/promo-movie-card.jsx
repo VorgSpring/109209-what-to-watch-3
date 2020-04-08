@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import {MovieWrapper} from '../movie-wrapper/movie-wrapper.jsx';
 import {MovieInfo} from '../movie-info/movie-info.jsx';
 import {MoviePoster} from '../movie-poster/movie-poster.jsx';
-import {MovieButtonsContainer} from '../movie-buttons/movie-buttons.jsx';
+import {MovieButtons} from '../movie-buttons/movie-buttons.jsx';
 import {loadPromoMovie} from '../../operations/promo-movie/promo-movie';
 import {getPromoMovieSelector} from '../../selectors/promo-movie/promo-movie';
+import {filmPropTypes} from '../../helpers/types';
 
-export class PromoMovieCard extends PureComponent {
+export class PromoMovieCardComponent extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -57,7 +58,7 @@ export class PromoMovieCard extends PureComponent {
                   released={released}
                 />
 
-                <MovieButtonsContainer
+                <MovieButtons
                   filmId={id}
                   isFavorite={isFavorite}
                 />
@@ -70,20 +71,12 @@ export class PromoMovieCard extends PureComponent {
   }
 }
 
-PromoMovieCard.defaultProps = {
+PromoMovieCardComponent.defaultProps = {
   film: null
 };
 
-PromoMovieCard.propTypes = {
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    bgImage: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired,
-    isFavorite: PropTypes.bool.isRequired
-  }),
+PromoMovieCardComponent.propTypes = {
+  film: PropTypes.shape(filmPropTypes),
   onLoadFilm: PropTypes.func.isRequired
 };
 
@@ -95,6 +88,6 @@ const mapDispatchToProps = (dispatch) => ({
   onLoadFilm: () => dispatch(loadPromoMovie())
 });
 
-export const PromoMovieContainer = connect(
+export const PromoMovieCard = connect(
     mapStateToProps, mapDispatchToProps
-)(PromoMovieCard);
+)(PromoMovieCardComponent);

@@ -1,7 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {GenreItem} from './genre-item.jsx';
-import {GenreTypes} from '../../constants/genre-type';
 
 describe(`GenreItem`, () => {
   let genreItem = null;
@@ -12,7 +11,7 @@ describe(`GenreItem`, () => {
 
     genreItem = shallow(<GenreItem
       onClick={clickHandler}
-      genre={GenreTypes.DRAMS}
+      genre={`blah`}
       isActiveGenre={false}
     />);
   });

@@ -1,11 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {MovieButtons} from './movie-buttons.jsx';
+import {MovieButtonsComponent} from './movie-buttons.jsx';
 import {RoutePaths} from '../../constants/route-paths';
 
 describe(`MovieButtons`, () => {
   const filmId = 1;
-  let playHandler = null;
   let changeFavoritesListHandler = null;
   let movieButtons = null;
   const history = {
@@ -13,14 +12,12 @@ describe(`MovieButtons`, () => {
   };
 
   beforeEach(() => {
-    playHandler = jest.fn();
     changeFavoritesListHandler = jest.fn();
     history.push = jest.fn();
 
-    movieButtons = shallow(<MovieButtons
+    movieButtons = shallow(<MovieButtonsComponent
       filmId={filmId}
       isFavorite={false}
-      onPlay={playHandler}
       onChangeFavoritesList={changeFavoritesListHandler}
       isAuthorizationRequired={false}
       history={history}
@@ -29,15 +26,8 @@ describe(`MovieButtons`, () => {
 
   afterEach(() => {
     movieButtons = null;
-    playHandler.mockClear();
     changeFavoritesListHandler.mockClear();
     history.push.mockClear();
-  });
-
-  it(`should handle play`, () => {
-    const button = movieButtons.find(`.btn--play`);
-    button.simulate(`click`, {preventDefault() {}});
-    expect(playHandler).toHaveBeenCalledWith(filmId);
   });
 
   it(`should handle add favorite list`, () => {

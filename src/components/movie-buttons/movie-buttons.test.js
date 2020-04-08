@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import {MovieButtons} from './movie-buttons.jsx';
+import {MovieButtonsComponent} from './movie-buttons.jsx';
 import renderer from 'react-test-renderer';
 
 describe(`MoviePoster`, () => {
@@ -11,7 +11,7 @@ describe(`MoviePoster`, () => {
   it(`should renders correctly`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <MovieButtons
+          <MovieButtonsComponent
             filmId={1}
             isFavorite={false}
             isAuthorizationRequired
@@ -28,7 +28,7 @@ describe(`MoviePoster`, () => {
   it(`should renders correctly with favorite icon`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <MovieButtons
+          <MovieButtonsComponent
             filmId={1}
             isFavorite
             isAuthorizationRequired={false}
@@ -45,7 +45,7 @@ describe(`MoviePoster`, () => {
   it(`should renders correctly with link to review`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <MovieButtons
+          <MovieButtonsComponent
             filmId={1}
             isFavorite={false}
             isAuthorizationRequired={false}

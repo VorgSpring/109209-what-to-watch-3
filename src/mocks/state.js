@@ -5,6 +5,7 @@ import {review} from './review';
 
 export const state = {
   films: {
+    isLoaded: true,
     isLoading: false,
     isError: false,
     films
@@ -17,6 +18,7 @@ export const state = {
   },
   user,
   favorites: {
+    isLoaded: true,
     isLoading: false,
     isError: false,
     films

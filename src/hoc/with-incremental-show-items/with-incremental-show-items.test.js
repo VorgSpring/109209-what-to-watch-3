@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {withIncrementalShowItems} from './with-incremental-show-items';
+import {films} from '../../mocks/films';
 
 describe(`withIncrementalShowItems`, () => {
   let component = null;
@@ -8,7 +9,7 @@ describe(`withIncrementalShowItems`, () => {
   const MockComponentWrapped = withIncrementalShowItems(MockComponent);
 
   beforeEach(() => {
-    component = shallow(<MockComponentWrapped />);
+    component = shallow(<MockComponentWrapped films={films} />);
   });
 
   afterEach(() => {

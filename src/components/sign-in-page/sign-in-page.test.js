@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter} from 'react-router-dom';
-import {SingInPage} from './sign-in-page.jsx';
+import {SingInPageComponent} from './sign-in-page.jsx';
 import renderer from 'react-test-renderer';
 
 jest.mock(`../../components/header/header.jsx`, () => ({
@@ -10,7 +10,7 @@ jest.mock(`../../components/header/header.jsx`, () => ({
 }));
 
 jest.mock(`../../components/sign-in-form/sign-in-form.jsx`, () => ({
-  SingInFormContainer() {
+  SingInForm() {
     return <sing-in-form />;
   }
 }));
@@ -26,7 +26,7 @@ describe(`SingInPage`, () => {
   it(`should renders correctly`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <SingInPage
+          <SingInPageComponent
             isAuthorizationRequired
           />
         </BrowserRouter>
@@ -38,7 +38,7 @@ describe(`SingInPage`, () => {
   it(`should renders correctly authorization user`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <SingInPage
+          <SingInPageComponent
             isAuthorizationRequired={false}
           />
         </BrowserRouter>

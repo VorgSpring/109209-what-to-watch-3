@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {preparedDateData} from '../../helpers/prepared-date-data/prepared-date-data';
+import {
+  preparedDateData
+} from '../../helpers/prepared-date-data/prepared-date-data';
 
 export const MovieReview = ({
   user, rating, comment, date

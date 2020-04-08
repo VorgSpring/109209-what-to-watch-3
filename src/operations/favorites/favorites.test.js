@@ -8,6 +8,7 @@ import {
   CHANGE_FAVORITES_REQUEST,
   CHANGE_FAVORITES_SUCCESS,
   CHANGE_FAVORITES_ERROR,
+  REMOVE_FAVORITE_FILM,
   LOAD_FAVORITE_FILMS_REQUEST,
   LOAD_FAVORITE_FILMS_SUCCESS,
   LOAD_FAVORITE_FILMS_ERROR
@@ -61,6 +62,10 @@ describe(`favorites operation`, () => {
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: CHANGE_FAVORITES_SUCCESS,
           payload: preparedFilmByServer
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(3, {
+          type: REMOVE_FAVORITE_FILM,
+          payload: preparedFilmByServer.id
         });
       });
   });

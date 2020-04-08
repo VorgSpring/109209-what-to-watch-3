@@ -2,7 +2,7 @@
 
 exports[`MainPage should renders correctly 1`] = `
 Array [
-  <promo-movie />,
+  <promo-movie-card />,
   <div
     className="page-content"
   >

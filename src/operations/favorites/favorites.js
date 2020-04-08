@@ -2,6 +2,8 @@ import {
   changeFavoritesRequest,
   changeFavoritesSuccess,
   changeFavoritesError,
+  addFavoriteFilm,
+  removeFavoriteFilm,
   loadFavoriteFilmsRequest,
   loadFavoriteFilmsSuccess,
   loadFavoriteFilmsError
@@ -14,12 +16,16 @@ import {
 import {ApiPaths} from '../../constants/api';
 
 export const sendChangeFavoriteList = (body) => (dispatch, _getState, api) => {
+  const {status} = body;
   dispatch(changeFavoritesRequest());
 
   return api.post(getLinkChangeFavoriteStatus(body))
   .then((response) => {
     const film = preparedFilmData(response.data);
+    const {id} = film;
+    const action = status ? addFavoriteFilm(film) : removeFavoriteFilm(id);
     dispatch(changeFavoritesSuccess(film));
+    dispatch(action);
   })
   .catch((e) => {
     const {error} = e.response.data;

@@ -1,25 +1,55 @@
 import React from 'react';
-import {MovieTabs} from './movie-tabs.jsx';
+import {MovieTabsComponent} from './movie-tabs.jsx';
 import renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
-import {state} from '../../mocks/state';
-import configureStore from 'redux-mock-store';
-import {MovieTabItems} from '../../constants/movie-tab';
-import {films} from '../../mocks/films';
+
+jest.mock(`../../constants/movie-tab`, () => ({
+  MovieTabComponents: {
+    Overview() {
+      return <movie-overview />;
+    },
+    Details() {
+      return <movie-details />;
+    },
+    Reviews() {
+      return <movie-reviews />;
+    }
+  },
+  MovieTabItems: {
+    OVERVIEW: `Overview`,
+    DETAILS: `Details`,
+    REVIEWS: `Reviews`
+  }
+}));
 
 describe(`MovieTabs`, () => {
-  it(`should renders correctly`, () => {
-    const mockStore = configureStore([]);
-    const store = mockStore(state);
-
+  it(`should renders correctly overview`, () => {
     const tree = renderer.create(
-        <Provider store={store}>
-          <MovieTabs
-            activeItem={MovieTabItems.DETAILS}
-            onActiveItem={()=>{}}
-            film={films[0]}
-          />
-        </Provider>
+        <MovieTabsComponent
+          activeItem={`Overview`}
+          onActiveItem={()=>{}}
+        />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly details`, () => {
+    const tree = renderer.create(
+        <MovieTabsComponent
+          activeItem={`Details`}
+          onActiveItem={()=>{}}
+        />
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders correctly reviews`, () => {
+    const tree = renderer.create(
+        <MovieTabsComponent
+          activeItem={`Reviews`}
+          onActiveItem={()=>{}}
+        />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

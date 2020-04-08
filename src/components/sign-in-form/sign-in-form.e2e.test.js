@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {SingInForm} from './sign-in-form.jsx';
+import {SingInFormComponent} from './sign-in-form.jsx';
 
 describe(`SingInForm`, () => {
   const data = {
@@ -20,7 +20,7 @@ describe(`SingInForm`, () => {
 
   beforeEach(() => {
     singInForm = shallow(
-        <SingInForm
+        <SingInFormComponent
           data={data}
           errors={errors}
           responseError={responseError}

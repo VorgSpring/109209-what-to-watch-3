@@ -6,6 +6,7 @@ import {
 } from '../../constants/actions-type';
 
 const initState = {
+  isLoaded: false,
   isLoading: false,
   isError: false,
   reviews: null
@@ -21,11 +22,11 @@ export default (state = initState, action) => {
           }
       );
 
-    // TODO сделать кеш не больше 3-х
     case (LOAD_REVIEWS_SUCCESS):
       return Object.assign(
           {}, state, {
             isLoading: false,
+            isLoaded: true,
             reviews: Object.assign(
                 {}, state.reviews, {
                   [action.payload.filmId]: action.payload.reviews
@@ -38,12 +39,7 @@ export default (state = initState, action) => {
       return Object.assign(
           {}, state, {
             isLoading: false,
-            isError: true,
-            reviews: Object.assign(
-                {}, state.reviews, {
-                  [action.payload.filmId]: []
-                }
-            )
+            isError: true
           }
       );
 

@@ -7,7 +7,7 @@ import {
   MovieTabComponents
 } from '../../constants/movie-tab';
 
-export const MovieTabs = ({activeItem, onActiveItem, film}) => {
+export const MovieTabsComponent = ({activeItem, onActiveItem}) => {
   const activeTab = activeItem ? activeItem : MovieTabItems.OVERVIEW;
   const MovieTabComponent = MovieTabComponents[activeTab];
 
@@ -26,17 +26,16 @@ export const MovieTabs = ({activeItem, onActiveItem, film}) => {
         </ul>
       </nav>
 
-      <MovieTabComponent film={film} />
+      <MovieTabComponent />
     </div>
   );
 };
 
-MovieTabs.propTypes = {
+MovieTabsComponent.propTypes = {
   activeItem: PropTypes.oneOf(
       Object.values(MovieTabItems)
   ),
-  onActiveItem: PropTypes.func.isRequired,
-  film: PropTypes.object.isRequired
+  onActiveItem: PropTypes.func.isRequired
 };
 
-export const MovieTabsWrapper = withActiveItem(MovieTabs);
+export const MovieTabs = withActiveItem(MovieTabsComponent);

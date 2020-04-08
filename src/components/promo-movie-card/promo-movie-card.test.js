@@ -1,5 +1,5 @@
 import React from 'react';
-import {PromoMovieCard} from './promo-movie-card.jsx';
+import {PromoMovieCardComponent} from './promo-movie-card.jsx';
 import renderer from 'react-test-renderer';
 import {films} from '../../mocks/films';
 
@@ -22,7 +22,7 @@ jest.mock(`../movie-poster/movie-poster.jsx`, () => ({
 }));
 
 jest.mock(`../movie-buttons/movie-buttons.jsx`, () => ({
-  MovieButtonsContainer() {
+  MovieButtons() {
     return <movie-review />;
   }
 }));
@@ -32,7 +32,7 @@ describe(`PromoMovieCard`, () => {
 
   it(`should renders correctly`, () => {
     const tree = renderer.create(
-        <PromoMovieCard
+        <PromoMovieCardComponent
           film={films[0]}
           onLoadFilm={loadFilmHandler}
         />
@@ -43,7 +43,7 @@ describe(`PromoMovieCard`, () => {
 
   it(`should renders correctly without film`, () => {
     const tree = renderer.create(
-        <PromoMovieCard
+        <PromoMovieCardComponent
           onLoadFilm={loadFilmHandler}
         />
     ).toJSON();

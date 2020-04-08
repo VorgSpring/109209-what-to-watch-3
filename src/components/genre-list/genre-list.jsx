@@ -2,11 +2,15 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {GenreItem} from '../genre-item/genre-item.jsx';
-import {GenreTypes} from '../../constants/genre-type';
 import {changeGenre} from '../../actions/filters/genre';
-import {getFilterGenreSelector} from '../../selectors/filters/genre';
+import {
+  getGenreTypesSelector
+} from '../../selectors/genre/genre';
+import {
+  getFilterGenreSelector
+} from '../../selectors/filters/filters';
 
-export class GenreList extends PureComponent {
+export class GenreListComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -20,11 +24,14 @@ export class GenreList extends PureComponent {
   }
 
   render() {
-    const {activeGenre} = this.props;
+    const {
+      activeGenre,
+      genreTypes
+    } = this.props;
 
     return (
       <ul className='catalog__genres-list'>
-        {Object.values(GenreTypes).map((genre) => (
+        {genreTypes.map((genre) => (
           <GenreItem
             key={genre}
             genre={genre}
@@ -37,16 +44,16 @@ export class GenreList extends PureComponent {
   }
 }
 
-GenreList.defaultProps = {
-  activeGenre: GenreTypes.ALL
-};
-
-GenreList.propTypes = {
+GenreListComponent.propTypes = {
+  genreTypes: PropTypes.arrayOf(
+      PropTypes.string
+  ).isRequired,
   onChangeGenre: PropTypes.func.isRequired,
-  activeGenre: PropTypes.oneOf(Object.values(GenreTypes))
+  activeGenre: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
+  genreTypes: getGenreTypesSelector(state),
   activeGenre: getFilterGenreSelector(state)
 });
 
@@ -54,4 +61,6 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeGenre: (genre) => dispatch(changeGenre(genre))
 });
 
-export const GenreListWrapper = connect(mapStateToProps, mapDispatchToProps)(GenreList);
+export const GenreList = connect(
+    mapStateToProps, mapDispatchToProps
+)(GenreListComponent);

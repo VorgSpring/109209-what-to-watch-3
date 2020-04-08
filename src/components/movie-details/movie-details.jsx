@@ -1,10 +1,16 @@
 import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   prepareTimeDataFromMinutes
 } from '../../helpers/prepared-time-data/prepared-time-data';
+import {
+  getFilmByIdSelector
+} from '../../selectors/films/films';
+import {filmPropTypes} from '../../helpers/types';
 
-export const MovieDetails = ({film}) => {
+export const MovieDetailsComponent = ({film}) => {
   const {director, starring, runTime, genre, released} = film;
 
   return (
@@ -51,14 +57,20 @@ export const MovieDetails = ({film}) => {
   );
 };
 
-MovieDetails.propTypes = {
-  film: PropTypes.shape({
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(
-        PropTypes.string
-    ).isRequired,
-    runTime: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-    released: PropTypes.number.isRequired
-  })
+MovieDetailsComponent.propTypes = {
+  film: PropTypes.shape(
+      filmPropTypes
+  ).isRequired
 };
+
+const mapStateToProps = (state, props) => ({
+  film: getFilmByIdSelector(state, props)
+});
+
+export const MovieDetailsContainer = connect(
+    mapStateToProps
+)(MovieDetailsComponent);
+
+export const MovieDetails = withRouter(
+    MovieDetailsContainer
+);

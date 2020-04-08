@@ -11,25 +11,25 @@ jest.mock(`../main-page/main-page.jsx`, () => ({
 }));
 
 jest.mock(`../sign-in-page/sign-in-page.jsx`, () => ({
-  SingInPageContainer() {
+  SingInPage() {
     return <sing-in-page />;
   }
 }));
 
 jest.mock(`../movie-page/movie-page.jsx`, () => ({
-  MoviePageContainer() {
+  MoviePage() {
     return <movie-page />;
   }
 }));
 
 jest.mock(`../movie-player/movie-player.jsx`, () => ({
-  MoviePlayerContainer() {
+  MoviePlayer() {
     return <movie-player />;
   }
 }));
 
 jest.mock(`../add-review-page/add-review-page.jsx`, () => ({
-  AddReviewPageContainer() {
+  AddReviewPage() {
     return <add-review-page />;
   }
 }));
@@ -40,11 +40,22 @@ jest.mock(`../favorite-movies-page/favorite-movies-page.jsx`, () => ({
   }
 }));
 
+jest.mock(`../private-route/private-route.jsx`, () => ({
+  PrivateRoute({render}) {
+    return render();
+  }
+}));
+
 describe(`App`, () => {
   it(`should renders main-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.MAIN]}>
-          <App />
+          <App
+            checkAuth={() => {}}
+            isLoadedFilms={false}
+            isAuthorizationRequired={false}
+            onLoadFilms={() => {}}
+          />
         </MemoryRouter>
     ).toJSON();
 
@@ -54,7 +65,12 @@ describe(`App`, () => {
   it(`should renders movie-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.FILM]}>
-          <App />
+          <App
+            checkAuth={() => {}}
+            isLoadedFilms={false}
+            isAuthorizationRequired={false}
+            onLoadFilms={() => {}}
+          />
         </MemoryRouter>
     ).toJSON();
 
@@ -64,7 +80,12 @@ describe(`App`, () => {
   it(`should renders sing-in-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.SING_IN]}>
-          <App />
+          <App
+            checkAuth={() => {}}
+            isLoadedFilms={false}
+            isAuthorizationRequired
+            onLoadFilms={() => {}}
+          />
         </MemoryRouter>
     ).toJSON();
 
@@ -74,7 +95,12 @@ describe(`App`, () => {
   it(`should renders add-review-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.REVIEW]}>
-          <App />
+          <App
+            checkAuth={() => {}}
+            isLoadedFilms={false}
+            isAuthorizationRequired={false}
+            onLoadFilms={() => {}}
+          />
         </MemoryRouter>
     ).toJSON();
 
@@ -84,7 +110,27 @@ describe(`App`, () => {
   it(`should renders favorite-movies-page`, () => {
     const tree = renderer.create(
         <MemoryRouter initialEntries={[RoutePaths.FAVORITE]}>
-          <App />
+          <App
+            checkAuth={() => {}}
+            isLoadedFilms={false}
+            isAuthorizationRequired={false}
+            onLoadFilms={() => {}}
+          />
+        </MemoryRouter>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`should renders movie-player`, () => {
+    const tree = renderer.create(
+        <MemoryRouter initialEntries={[RoutePaths.PLAYER]}>
+          <App
+            checkAuth={() => {}}
+            isLoadedFilms={false}
+            isAuthorizationRequired={false}
+            onLoadFilms={() => {}}
+          />
         </MemoryRouter>
     ).toJSON();
 

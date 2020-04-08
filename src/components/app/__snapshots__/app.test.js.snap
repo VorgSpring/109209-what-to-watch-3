@@ -1,36 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should renders add-review-page 1`] = `
-Array [
-  <add-review-page />,
-  <movie-player />,
-]
-`;
+exports[`App should renders add-review-page 1`] = `null`;
 
-exports[`App should renders favorite-movies-page 1`] = `
-Array [
-  <favorite-movies-page />,
-  <movie-player />,
-]
-`;
+exports[`App should renders favorite-movies-page 1`] = `null`;
 
-exports[`App should renders main-page 1`] = `
-Array [
-  <main-page />,
-  <movie-player />,
-]
-`;
+exports[`App should renders main-page 1`] = `null`;
 
-exports[`App should renders movie-page 1`] = `
-Array [
-  <movie-page />,
-  <movie-player />,
-]
-`;
+exports[`App should renders movie-page 1`] = `null`;
 
-exports[`App should renders sing-in-page 1`] = `
-Array [
-  <sing-in-page />,
-  <movie-player />,
-]
-`;
+exports[`App should renders movie-player 1`] = `null`;
+
+exports[`App should renders sing-in-page 1`] = `null`;

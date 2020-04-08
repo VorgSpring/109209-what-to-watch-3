@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {GenreTypes} from '../../constants/genre-type';
 
 export class GenreItem extends PureComponent {
   constructor(props) {
@@ -37,6 +36,6 @@ export class GenreItem extends PureComponent {
 
 GenreItem.propTypes = {
   onClick: PropTypes.func.isRequired,
-  genre: PropTypes.oneOf(Object.values(GenreTypes)).isRequired,
+  genre: PropTypes.string.isRequired,
   isActiveGenre: PropTypes.bool.isRequired
 };

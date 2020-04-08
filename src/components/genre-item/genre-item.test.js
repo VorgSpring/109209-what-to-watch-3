@@ -1,6 +1,6 @@
 import React from 'react';
 import {GenreItem} from './genre-item.jsx';
-import {GenreTypes} from '../../constants/genre-type';
+import {ALL_GENRES_TYPE} from '../../constants/films';
 import renderer from 'react-test-renderer';
 
 describe(`GenreItem`, () => {
@@ -8,7 +8,7 @@ describe(`GenreItem`, () => {
     const tree = renderer.create(
         <GenreItem
           onClick={() => {}}
-          genre={GenreTypes.ALL}
+          genre={ALL_GENRES_TYPE}
           isActiveGenre={false}
         />
     ).toJSON();

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReviewForm} from './review-form.jsx';
+import {ReviewFormComponent} from './review-form.jsx';
 import renderer from 'react-test-renderer';
 
 describe(`ReviewForm`, () => {
@@ -20,7 +20,7 @@ describe(`ReviewForm`, () => {
     const responseError = null;
 
     const tree = renderer.create(
-        <ReviewForm
+        <ReviewFormComponent
           data={data}
           errors={errors}
           responseError={responseError}
@@ -42,7 +42,7 @@ describe(`ReviewForm`, () => {
     const notEmptyResponseError = `blah-blah`;
 
     const tree = renderer.create(
-        <ReviewForm
+        <ReviewFormComponent
           data={data}
           errors={notEmptyErrors}
           responseError={notEmptyResponseError}

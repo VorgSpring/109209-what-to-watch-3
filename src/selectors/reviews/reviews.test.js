@@ -1,12 +1,13 @@
 import {getReviewsByFilmIdSelector} from './reviews';
 import {state} from '../../mocks/state';
 
-// TODO негативный сценарий
 describe(`reviews selector`, () => {
   it(`should get user`, () => {
     const props = {
-      film: {
-        id: 1
+      match: {
+        params: {
+          id: 1
+        }
       }
     };
 

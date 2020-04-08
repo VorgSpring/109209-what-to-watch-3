@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SmallMovieCards should renders correctly 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <small-movie-card />
+  <small-movie-card />
+  <small-movie-card />
+  <small-movie-card />
+  <small-movie-card />
+  <small-movie-card />
+</div>
+`;

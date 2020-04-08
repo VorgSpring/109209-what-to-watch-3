@@ -1,24 +1,32 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router-dom';
 import {MovieReview} from '../movie-review/movie-review.jsx';
 import {loadReviews} from '../../operations/reviews/reviews';
-import {getReviewsByFilmIdSelector} from '../../selectors/reviews/reviews';
+import {
+  getReviewsLoadedStatusSelector,
+  getReviewsByFilmIdSelector
+} from '../../selectors/reviews/reviews';
+import {
+  getFilmIdSelector
+} from '../../selectors/films/films';
+import {reviewPropTypes} from '../../helpers/types';
 
 // TODO отрисовать пустые комментарии
-export class MovieReviews extends PureComponent {
+export class MovieReviewsComponent extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
     const {
-      reviews,
+      isLoaded,
       filmId,
       onLoadReviews
     } = this.props;
 
-    if (!reviews) {
+    if (!isLoaded) {
       onLoadReviews(filmId);
     }
   }
@@ -30,10 +38,12 @@ export class MovieReviews extends PureComponent {
   }
 
   render() {
-    const {reviews} = this.props;
+    const {
+      reviews, isLoaded
+    } = this.props;
 
-    if (!reviews) {
-      return <div className='movie-card__reviews movie-card__row' />;
+    if (!isLoaded) {
+      return null;
     }
 
     return (
@@ -53,44 +63,24 @@ export class MovieReviews extends PureComponent {
   }
 }
 
-MovieReviews.defaultProps = {
-  reviews: null
-};
-
-MovieReviews.propTypes = {
+MovieReviewsComponent.propTypes = {
   filmId: PropTypes.number.isRequired,
   reviews: PropTypes.shape({
     odd: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          user: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired
-          }).isRequired,
-          rating: PropTypes.number.isRequired,
-          comment: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired
-        })
+        PropTypes.shape(reviewPropTypes)
     ),
     even: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          user: PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired
-          }).isRequired,
-          rating: PropTypes.number.isRequired,
-          comment: PropTypes.string.isRequired,
-          date: PropTypes.string.isRequired
-        })
+        PropTypes.shape(reviewPropTypes)
     )
-  }),
+  }).isRequired,
+  isLoaded: PropTypes.bool.isRequired,
   onLoadReviews: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, props) => ({
+  isLoaded: getReviewsLoadedStatusSelector(state),
   reviews: getReviewsByFilmIdSelector(state, props),
-  filmId: props.film.id
+  filmId: getFilmIdSelector(state, props)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -99,4 +89,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 export const MovieReviewsContainer = connect(
     mapStateToProps, mapDispatchToProps
-)(MovieReviews);
+)(MovieReviewsComponent);
+
+export const MovieReviews = withRouter(
+    MovieReviewsContainer
+);

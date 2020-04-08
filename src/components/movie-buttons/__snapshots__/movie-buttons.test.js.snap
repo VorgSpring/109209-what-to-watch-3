@@ -4,10 +4,10 @@ exports[`MoviePoster should renders correctly 1`] = `
 <div
   className="movie-card__buttons"
 >
-  <button
+  <a
     className="btn btn--play movie-card__button"
+    href="/player/1"
     onClick={[Function]}
-    type="button"
   >
     <svg
       height="19"
@@ -21,7 +21,7 @@ exports[`MoviePoster should renders correctly 1`] = `
     <span>
       Play
     </span>
-  </button>
+  </a>
   <button
     className="btn btn--list movie-card__button"
     onClick={[Function]}
@@ -47,10 +47,10 @@ exports[`MoviePoster should renders correctly with favorite icon 1`] = `
 <div
   className="movie-card__buttons"
 >
-  <button
+  <a
     className="btn btn--play movie-card__button"
+    href="/player/1"
     onClick={[Function]}
-    type="button"
   >
     <svg
       height="19"
@@ -64,7 +64,7 @@ exports[`MoviePoster should renders correctly with favorite icon 1`] = `
     <span>
       Play
     </span>
-  </button>
+  </a>
   <button
     className="btn btn--list movie-card__button"
     onClick={[Function]}
@@ -90,10 +90,10 @@ exports[`MoviePoster should renders correctly with link to review 1`] = `
 <div
   className="movie-card__buttons"
 >
-  <button
+  <a
     className="btn btn--play movie-card__button"
+    href="/player/1"
     onClick={[Function]}
-    type="button"
   >
     <svg
       height="19"
@@ -107,7 +107,7 @@ exports[`MoviePoster should renders correctly with link to review 1`] = `
     <span>
       Play
     </span>
-  </button>
+  </a>
   <button
     className="btn btn--list movie-card__button"
     onClick={[Function]}

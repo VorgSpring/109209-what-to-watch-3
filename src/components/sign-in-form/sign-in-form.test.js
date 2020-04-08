@@ -1,5 +1,5 @@
 import React from 'react';
-import {SingInForm} from './sign-in-form.jsx';
+import {SingInFormComponent} from './sign-in-form.jsx';
 import renderer from 'react-test-renderer';
 
 describe(`SingInForm`, () => {
@@ -20,7 +20,7 @@ describe(`SingInForm`, () => {
     const responseError = null;
 
     const tree = renderer.create(
-        <SingInForm
+        <SingInFormComponent
           data={data}
           errors={errors}
           responseError={responseError}
@@ -42,7 +42,7 @@ describe(`SingInForm`, () => {
     const notEmptyResponseError = `blah-blah`;
 
     const tree = renderer.create(
-        <SingInForm
+        <SingInFormComponent
           data={data}
           errors={notEmptyErrors}
           responseError={notEmptyResponseError}

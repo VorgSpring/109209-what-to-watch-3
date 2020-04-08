@@ -1,8 +1,8 @@
 import {CHANGE_GENRE} from '../../constants/actions-type';
-import {GenreTypes} from '../../constants/genre-type';
+import {ALL_GENRES_TYPE} from '../../constants/films';
 
 const initFilters = {
-  genre: GenreTypes.ALL
+  genre: ALL_GENRES_TYPE
 };
 
 export default (filters = initFilters, action) => {

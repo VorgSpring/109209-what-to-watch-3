@@ -2,7 +2,8 @@ import {
   getFilmPathLink,
   getReviewPathLink,
   getLinkChangeFavoriteStatus,
-  getLinkForReview
+  getLinkForReview,
+  getPlayerLink
 } from './get-links';
 
 describe(`get links`, () => {
@@ -20,5 +21,9 @@ describe(`get links`, () => {
 
   it(`should correct get link for review`, () => {
     expect(getLinkForReview(13)).toBe(`/comments/13`);
+  });
+
+  it(`should correct get link player`, () => {
+    expect(getPlayerLink(13)).toBe(`/player/13`);
   });
 });

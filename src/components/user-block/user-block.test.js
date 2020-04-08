@@ -10,7 +10,6 @@ describe(`UserBlock`, () => {
         <BrowserRouter>
           <UserBlock
             user={user}
-            getUser={() => {}}
           />
         </BrowserRouter>
     ).toJSON();
@@ -21,9 +20,7 @@ describe(`UserBlock`, () => {
   it(`should renders correctly without user`, () => {
     const tree = renderer.create(
         <BrowserRouter>
-          <UserBlock
-            getUser={() => {}}
-          />
+          <UserBlock/>
         </BrowserRouter>
     ).toJSON();
 

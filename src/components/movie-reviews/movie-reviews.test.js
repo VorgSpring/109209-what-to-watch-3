@@ -1,5 +1,5 @@
 import React from 'react';
-import {MovieReviews} from './movie-reviews.jsx';
+import {MovieReviewsComponent} from './movie-reviews.jsx';
 import renderer from 'react-test-renderer';
 import {reviews} from '../../mocks/reviews';
 
@@ -14,21 +14,11 @@ describe(`MovieReviews`, () => {
 
   it(`should renders correctly`, () => {
     const tree = renderer.create(
-        <MovieReviews
+        <MovieReviewsComponent
           filmId={1}
           reviews={reviews}
           onLoadReviews={onLoadReviews}
-        />
-    ).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`should renders correctly without reviews`, () => {
-    const tree = renderer.create(
-        <MovieReviews
-          filmId={1}
-          onLoadReviews={onLoadReviews}
+          isLoaded
         />
     ).toJSON();
 

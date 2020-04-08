@@ -1,11 +1,11 @@
 import reducer from './filters';
-import {GenreTypes} from '../../constants/genre-type';
+import {ALL_GENRES_TYPE} from '../../constants/films';
 import {CHANGE_GENRE} from '../../constants/actions-type';
 
 describe(`reducer filters`, () => {
   it(`should return the initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
-      genre: GenreTypes.ALL
+      genre: ALL_GENRES_TYPE
     });
   });
 
@@ -13,12 +13,12 @@ describe(`reducer filters`, () => {
     const action = {
       type: CHANGE_GENRE,
       payload: {
-        genre: GenreTypes.COMEDIES
+        genre: `blah`
       }
     };
 
     expect(reducer(undefined, action)).toEqual({
-      genre: GenreTypes.COMEDIES
+      genre: `blah`
     });
   });
 });

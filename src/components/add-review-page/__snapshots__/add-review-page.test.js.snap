@@ -18,5 +18,3 @@ exports[`AddReviewPage should renders correctly 1`] = `
   <review-form />
 </section>
 `;
-
-exports[`AddReviewPage should renders correctly without film 1`] = `null`;

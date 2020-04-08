@@ -1,14 +1,16 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import {MovieReviews} from './movie-reviews.jsx';
+import {MovieReviewsComponent} from './movie-reviews.jsx';
+import {reviews} from '../../mocks/reviews';
 
 describe(`MovieReviews`, () => {
   it(`should load reviews after render`, () => {
     const loadReviewsHandler = jest.fn();
 
-    shallow(<MovieReviews
+    shallow(<MovieReviewsComponent
       filmId={1}
-      reviews={null}
+      isLoaded={false}
+      reviews={reviews}
       onLoadReviews={loadReviewsHandler}
     />);
 

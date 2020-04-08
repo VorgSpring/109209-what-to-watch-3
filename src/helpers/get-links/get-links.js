@@ -13,3 +13,7 @@ export const getFilmPathLink = (id) => (
 export const getReviewPathLink = (id) => (
   `/film/${id}/review`
 );
+
+export const getPlayerLink = (id) => (
+  `/player/${id}`
+);

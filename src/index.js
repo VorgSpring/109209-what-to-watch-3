@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {BrowserRouter} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import store from './store';
-import {App} from './components/app/app.jsx';
+import {AppContainer} from './components/app/app.jsx';
+import history from './history';
 
 const init = () => {
   const root = document.querySelector(`#root`);
   ReactDOM.render(
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <Router history={history}>
+          <AppContainer />
+        </Router >
       </Provider>, root
   );
 };

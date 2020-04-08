@@ -1,5 +1,5 @@
 import React from 'react';
-import {AddReviewPage} from './add-review-page.jsx';
+import {AddReviewPageComponent} from './add-review-page.jsx';
 import renderer from 'react-test-renderer';
 import {films} from '../../mocks/films';
 
@@ -16,7 +16,7 @@ jest.mock(`../movie-poster/movie-poster.jsx`, () => ({
 }));
 
 jest.mock(`../review-form/review-form.jsx`, () => ({
-  ReviewFormContainer() {
+  ReviewForm() {
     return <review-form />;
   }
 }));
@@ -24,19 +24,8 @@ jest.mock(`../review-form/review-form.jsx`, () => ({
 describe(`AddReviewPage`, () => {
   it(`should renders correctly`, () => {
     const tree = renderer.create(
-        <AddReviewPage
+        <AddReviewPageComponent
           film={films[0]}
-          onLoadFilms={() => {}}
-        />
-    ).toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it(`should renders correctly without film`, () => {
-    const tree = renderer.create(
-        <AddReviewPage
-          onLoadFilms={() => {}}
         />
     ).toJSON();
 

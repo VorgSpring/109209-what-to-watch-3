@@ -1,54 +1,62 @@
 import {createSelector} from 'reselect';
 import {
-  getFilterGenreSelector,
-  getFilterGenreByPropsSelector
-} from '../filters/genre';
-import {GenreTypes} from '../../constants/genre-type';
-import {getPlayedFilmIdSelector} from '../player/player';
+  getFilterGenreSelector
+} from '../filters/filters';
+import {
+  MAX_COUNT_SIMILAR_FILMS,
+  ALL_GENRES_TYPE
+} from '../../constants/films';
 
-export const getFilmsSelector = (state) => state.films.films;
-export const getFilmIdSelector = (_, props) => props.match.params.id;
-export const getFilmExcludeIdSelector = (_, props) => props && props.excludeId || null;
-export const getMaxFilmsCountSelector = (_, props) => props && props.max || null;
+export const getFilmsLoadedStatusSelector = (state) =>
+  state.films && state.films.isLoaded || false;
 
-export const findFilmById = (films, id) => {
-  if (!films) {
-    return null;
-  }
+export const getFilmsSelector = (state) =>
+  state.films && state.films.films || [];
 
-  const parseId = parseInt(id, 10);
-  if (isNaN(parseId)) {
-    return null;
-  }
+export const getFilmIdSelector = (_, props) => {
+  const id = parseInt(
+      props && props.match && props.match.params && props.match.params.id, 10
+  );
 
-  return films.find((film) => film.id === parseId);
+  return isNaN(id) ? null : id;
 };
 
 export const getFiltratedFilmsSelector = createSelector(
     getFilmsSelector,
     getFilterGenreSelector,
-    getFilterGenreByPropsSelector,
-    getFilmExcludeIdSelector,
-    getMaxFilmsCountSelector,
-    (films, genreByState, genreByProps, excludeId, max) => {
-      const genreFilter = genreByProps || genreByState;
-
-      if (genreFilter === GenreTypes.ALL) {
+    (films, filter) => {
+      if (filter === ALL_GENRES_TYPE) {
         return films;
       }
 
-      const result = films.filter(({genre, id}) => (
-        genre === genreFilter && excludeId !== id
+      return films.filter(({genre}) => (
+        genre === filter
       ));
-
-      return max ? result.slice(0, max) : result;
     }
 );
 
 export const getFilmByIdSelector = createSelector(
-    getFilmsSelector, getFilmIdSelector, findFilmById
+    getFilmsSelector,
+    getFilmIdSelector,
+    (films, id) => {
+      if (!films || !id) {
+        return null;
+      }
+
+      return films.find((film) => film.id === id);
+    }
 );
 
-export const getPlayedFilmSelector = createSelector(
-    getFilmsSelector, getPlayedFilmIdSelector, findFilmById
+export const getSimilarFilmsSelector = createSelector(
+    getFilmsSelector,
+    getFilmByIdSelector,
+    (films, film) => {
+      if (!film) {
+        return [];
+      }
+
+      return films.filter(({genre, id}) => (
+        genre === film.genre && id !== film.id
+      )).slice(0, MAX_COUNT_SIMILAR_FILMS);
+    }
 );

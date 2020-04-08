@@ -6,9 +6,10 @@ import {
 } from '../../constants/actions-type';
 
 const initState = {
+  isLoaded: false,
   isLoading: false,
   isError: false,
-  films: null
+  films: []
 };
 
 export default (state = initState, action) => {
@@ -24,6 +25,7 @@ export default (state = initState, action) => {
     case (LOAD_FILMS_SUCCESS):
       return Object.assign(
           {}, state, {
+            isLoaded: true,
             isLoading: false,
             films: action.payload
           }

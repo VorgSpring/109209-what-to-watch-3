@@ -1,47 +1,123 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, PureComponent} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {Route, Switch} from 'react-router-dom';
 import {MainPage} from '../main-page/main-page.jsx';
-import {SingInPageContainer} from '../sign-in-page/sign-in-page.jsx';
-import {MoviePageContainer} from '../movie-page/movie-page.jsx';
-import {MoviePlayerContainer} from '../movie-player/movie-player.jsx';
-import {AddReviewPageContainer} from '../add-review-page/add-review-page.jsx';
+import {SingInPage} from '../sign-in-page/sign-in-page.jsx';
+import {MoviePage} from '../movie-page/movie-page.jsx';
+import {MoviePlayer} from '../movie-player/movie-player.jsx';
+import {AddReviewPage} from '../add-review-page/add-review-page.jsx';
 import {FavoriteMoviesPage} from '../favorite-movies-page/favorite-movies-page.jsx';
 import {RoutePaths} from '../../constants/route-paths';
+import {PrivateRoute} from '../private-route/private-route.jsx';
+import {
+  getFilmsLoadedStatusSelector
+} from '../../selectors/films/films';
+import {loadFilms} from '../../operations/films/films';
+import {
+  getAuthorizationData
+} from '../../operations/authorization/authorization';
+import {
+  getAuthorizationStatusSelector
+} from '../../selectors/authorization/authorization';
 
-export const App = () => (
-  <Fragment>
-    <Switch>
-      <Route
-        exact
-        path={RoutePaths.MAIN}
-        component={MainPage}
-      />
 
-      <Route
-        exact
-        path={RoutePaths.FILM}
-        component={MoviePageContainer}
-      />
+export class App extends PureComponent {
+  componentDidMount() {
+    const {
+      isLoadedFilms,
+      onLoadFilms,
+      isAuthorizationRequired,
+      checkAuth
+    } = this.props;
 
-      <Route
-        exact
-        path={RoutePaths.SING_IN}
-        component={SingInPageContainer}
-      />
+    if (isAuthorizationRequired) {
+      checkAuth();
+    }
 
-      <Route
-        exact
-        path={RoutePaths.REVIEW}
-        component={AddReviewPageContainer}
-      />
+    if (!isLoadedFilms) {
+      onLoadFilms();
+    }
+  }
 
-      <Route
-        exact
-        path={RoutePaths.FAVORITE}
-        component={FavoriteMoviesPage}
-      />
-    </Switch>
+  render() {
+    const {
+      isAuthorizationRequired,
+      isLoadedFilms
+    } = this.props;
 
-    <MoviePlayerContainer />
-  </Fragment>
-);
+    if (!isLoadedFilms) {
+      return null;
+    }
+
+    return (
+      <Fragment>
+        <Switch>
+          <Route
+            exact
+            path={RoutePaths.FILM}
+            component={MoviePage}
+          />
+
+          {isAuthorizationRequired && <Route
+            exact
+            path={RoutePaths.SING_IN}
+            component={SingInPage}
+          />}
+
+          <Route
+            exact
+            path={RoutePaths.PLAYER}
+            component={MoviePlayer}
+          />
+
+          <PrivateRoute
+            exact
+            path={RoutePaths.REVIEW}
+            render={
+              (props) => <AddReviewPage {...props} />
+            }
+          />
+
+          <PrivateRoute
+            exact
+            path={RoutePaths.FAVORITE}
+            render={
+              (props) => <FavoriteMoviesPage {...props} />
+            }
+          />
+
+          <Route
+            path={RoutePaths.MAIN}
+            component={MainPage}
+          />
+        </Switch>
+      </Fragment>
+    );
+  }
+}
+
+App.defaultProps = {
+  user: null
+};
+
+App.propTypes = {
+  isLoadedFilms: PropTypes.bool.isRequired,
+  isAuthorizationRequired: PropTypes.bool.isRequired,
+  onLoadFilms: PropTypes.func.isRequired,
+  checkAuth: PropTypes.func.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  isLoadedFilms: getFilmsLoadedStatusSelector(state),
+  isAuthorizationRequired: getAuthorizationStatusSelector(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onLoadFilms: () => dispatch(loadFilms()),
+  checkAuth: () => dispatch(getAuthorizationData())
+});
+
+export const AppContainer = connect(
+    mapStateToProps, mapDispatchToProps
+)(App);

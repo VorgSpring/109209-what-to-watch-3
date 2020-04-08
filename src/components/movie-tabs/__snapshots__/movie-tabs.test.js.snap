@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieTabs should renders correctly 1`] = `
+exports[`MovieTabs should renders correctly details 1`] = `
 <div
   className="movie-card__desc"
 >
@@ -42,89 +42,98 @@ exports[`MovieTabs should renders correctly 1`] = `
       </li>
     </ul>
   </nav>
-  <div
-    className="movie-card__text movie-card__row"
+  <movie-details />
+</div>
+`;
+
+exports[`MovieTabs should renders correctly overview 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
   >
-    <div
-      className="movie-card__text-col"
+    <ul
+      className="movie-nav__list"
     >
-      <p
-        className="movie-card__details-item"
+      <li
+        className="movie-nav__item movie-nav__item--active"
+        onClick={[Function]}
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Director
-        </strong>
         <span
-          className="movie-card__details-value"
+          className="movie-nav__link"
         >
-          blah
+          Overview
         </span>
-      </p>
-      <p
-        className="movie-card__details-item"
+      </li>
+      <li
+        className="movie-nav__item false"
+        onClick={[Function]}
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Starring
-        </strong>
         <span
-          className="movie-card__details-value"
+          className="movie-nav__link"
         >
-          blah,
-          <br />
-          blah-blahfalse
+          Details
         </span>
-      </p>
-    </div>
-    <div
-      className="movie-card__text-col"
+      </li>
+      <li
+        className="movie-nav__item false"
+        onClick={[Function]}
+      >
+        <span
+          className="movie-nav__link"
+        >
+          Reviews
+        </span>
+      </li>
+    </ul>
+  </nav>
+  <movie-overview />
+</div>
+`;
+
+exports[`MovieTabs should renders correctly reviews 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
     >
-      <p
-        className="movie-card__details-item"
+      <li
+        className="movie-nav__item false"
+        onClick={[Function]}
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Run Time
-        </strong>
         <span
-          className="movie-card__details-value"
+          className="movie-nav__link"
         >
-          2h 03m
+          Overview
         </span>
-      </p>
-      <p
-        className="movie-card__details-item"
+      </li>
+      <li
+        className="movie-nav__item false"
+        onClick={[Function]}
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Genre
-        </strong>
         <span
-          className="movie-card__details-value"
+          className="movie-nav__link"
         >
-          Crime
+          Details
         </span>
-      </p>
-      <p
-        className="movie-card__details-item"
+      </li>
+      <li
+        className="movie-nav__item movie-nav__item--active"
+        onClick={[Function]}
       >
-        <strong
-          className="movie-card__details-name"
-        >
-          Released
-        </strong>
         <span
-          className="movie-card__details-value"
+          className="movie-nav__link"
         >
-          2000
+          Reviews
         </span>
-      </p>
-    </div>
-  </div>
+      </li>
+    </ul>
+  </nav>
+  <movie-reviews />
 </div>
 `;

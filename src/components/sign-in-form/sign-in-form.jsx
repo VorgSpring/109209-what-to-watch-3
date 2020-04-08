@@ -6,10 +6,10 @@ import {FormFields} from '../../constants/form-fields';
 import {sendAuthorizationData} from '../../operations/authorization/authorization';
 import {
   getErrorAuthorizationSelector,
-  isLoadingAuthorizationSelector
+  getLoadingStatusAuthorizationSelector
 } from '../../selectors/authorization/authorization';
 
-export class SingInForm extends PureComponent {
+export class SingInFormComponent extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -96,7 +96,7 @@ export class SingInForm extends PureComponent {
   }
 }
 
-SingInForm.propTypes = {
+SingInFormComponent.propTypes = {
   data: PropTypes.shape({
     email: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
@@ -113,17 +113,17 @@ SingInForm.propTypes = {
 };
 
 const initialFields = [FormFields.EMAIL, FormFields.PASSWORD];
-export const SingInFormWrapper = withForm(SingInForm, initialFields);
+export const SingInFormWrapper = withForm(SingInFormComponent, initialFields);
 
 const mapStateToProps = (state) => ({
   responseError: getErrorAuthorizationSelector(state),
-  isLoading: isLoadingAuthorizationSelector(state)
+  isLoading: getLoadingStatusAuthorizationSelector(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   authorization: (data) => dispatch(sendAuthorizationData(data))
 });
 
-export const SingInFormContainer = connect(
+export const SingInForm = connect(
     mapStateToProps, mapDispatchToProps
 )(SingInFormWrapper);

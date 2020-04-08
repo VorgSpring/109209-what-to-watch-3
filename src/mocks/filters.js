@@ -1,5 +1,5 @@
-import {GenreTypes} from '../constants/genre-type';
+import {ALL_GENRES_TYPE} from '../constants/films';
 
 export const filters = {
-  genre: GenreTypes.ALL
+  genre: ALL_GENRES_TYPE.ALL
 };

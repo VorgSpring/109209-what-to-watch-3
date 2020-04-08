@@ -16,9 +16,3 @@ exports[`MovieReviews should renders correctly 1`] = `
   </div>
 </div>
 `;
-
-exports[`MovieReviews should renders correctly without reviews 1`] = `
-<div
-  className="movie-card__reviews movie-card__row"
-/>
-`;

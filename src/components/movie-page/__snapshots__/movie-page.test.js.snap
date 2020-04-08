@@ -14,11 +14,30 @@ Array [
       >
         More like this
       </h2>
-      <movie-list />
+      <similar-movies-list />
     </section>
     <main-footer />
   </div>,
 ]
 `;
 
-exports[`MoviePage should renders correctly without film 1`] = `null`;
+exports[`MoviePage should renders correctly without film 1`] = `
+Array [
+  <movie-card />,
+  <div
+    className="page-content"
+  >
+    <section
+      className="catalog catalog--like-this"
+    >
+      <h2
+        className="catalog__title"
+      >
+        More like this
+      </h2>
+      <similar-movies-list />
+    </section>
+    <main-footer />
+  </div>,
+]
+`;
